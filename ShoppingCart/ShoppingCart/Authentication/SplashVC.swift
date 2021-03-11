@@ -7,7 +7,9 @@
 
 import UIKit
 
-class SplashVC: UIViewController {
+class SplashVC: UIViewController, Coordinating {
+    var coordinator: Coordinator?
+    
     // MARK:- Properties
     // MARK:- Lifecycles
     override func viewDidLoad() {
