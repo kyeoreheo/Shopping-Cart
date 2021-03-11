@@ -1,0 +1,23 @@
+{
+  "images" : [
+    {
+      "filename" : "blank-profile-picture-973460_960_720.png",
+      "idiom" : "universal",
+      "scale" : "1x"
+    },
+    {
+      "filename" : "blank-profile-picture-973460_960_720-1.png",
+      "idiom" : "universal",
+      "scale" : "2x"
+    },
+    {
+      "filename" : "blank-profile-picture-973460_960_720-2.png",
+      "idiom" : "universal",
+      "scale" : "3x"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}
