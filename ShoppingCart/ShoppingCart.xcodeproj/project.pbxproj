@@ -7,9 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3158ECA325FAD8460058B98C /* Global.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3158ECA225FAD8460058B98C /* Global.swift */; };
 		31712FE525FAAE9900BFA25E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31712FE425FAAE9900BFA25E /* AppDelegate.swift */; };
 		31712FE725FAAE9900BFA25E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31712FE625FAAE9900BFA25E /* SceneDelegate.swift */; };
-		31712FE925FAAE9900BFA25E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31712FE825FAAE9900BFA25E /* ViewController.swift */; };
+		31712FE925FAAE9900BFA25E /* SplashVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31712FE825FAAE9900BFA25E /* SplashVC.swift */; };
 		31712FEF25FAAE9900BFA25E /* ShoppingCart.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 31712FED25FAAE9900BFA25E /* ShoppingCart.xcdatamodeld */; };
 		31712FF125FAAE9A00BFA25E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 31712FF025FAAE9A00BFA25E /* Assets.xcassets */; };
 		31712FF425FAAE9A00BFA25E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 31712FF225FAAE9A00BFA25E /* LaunchScreen.storyboard */; };
@@ -37,10 +38,11 @@
 
 /* Begin PBXFileReference section */
 		2104EC1D14BCAC62ED0E9E42 /* Pods_ShoppingCart.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ShoppingCart.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3158ECA225FAD8460058B98C /* Global.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Global.swift; sourceTree = "<group>"; };
 		31712FE125FAAE9900BFA25E /* ShoppingCart.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ShoppingCart.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		31712FE425FAAE9900BFA25E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		31712FE625FAAE9900BFA25E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		31712FE825FAAE9900BFA25E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		31712FE825FAAE9900BFA25E /* SplashVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashVC.swift; sourceTree = "<group>"; };
 		31712FEE25FAAE9900BFA25E /* ShoppingCart.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ShoppingCart.xcdatamodel; sourceTree = "<group>"; };
 		31712FF025FAAE9A00BFA25E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		31712FF325FAAE9A00BFA25E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -140,6 +142,7 @@
 				31712FF025FAAE9A00BFA25E /* Assets.xcassets */,
 				31712FE425FAAE9900BFA25E /* AppDelegate.swift */,
 				31712FE625FAAE9900BFA25E /* SceneDelegate.swift */,
+				3158ECA225FAD8460058B98C /* Global.swift */,
 			);
 			path = Application;
 			sourceTree = "<group>";
@@ -147,7 +150,7 @@
 		3171301E25FAAEA600BFA25E /* Authentication */ = {
 			isa = PBXGroup;
 			children = (
-				31712FE825FAAE9900BFA25E /* ViewController.swift */,
+				31712FE825FAAE9900BFA25E /* SplashVC.swift */,
 			);
 			path = Authentication;
 			sourceTree = "<group>";
@@ -349,9 +352,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				31712FE925FAAE9900BFA25E /* ViewController.swift in Sources */,
+				31712FE925FAAE9900BFA25E /* SplashVC.swift in Sources */,
 				31712FE525FAAE9900BFA25E /* AppDelegate.swift in Sources */,
 				31712FE725FAAE9900BFA25E /* SceneDelegate.swift in Sources */,
+				3158ECA325FAD8460058B98C /* Global.swift in Sources */,
 				31712FEF25FAAE9900BFA25E /* ShoppingCart.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
