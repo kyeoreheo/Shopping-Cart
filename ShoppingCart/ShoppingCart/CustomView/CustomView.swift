@@ -11,6 +11,24 @@ class CustomView {
     static let shared = CustomView()
     private init() { }
     
+    func header(headerType: HeaderType, target: Any, action: Selector) -> UIView {
+        let view = UIView()
+        let button = UIButton()
+        
+        view.addSubview(button)
+        button.backgroundColor = .blue
+        button.isUserInteractionEnabled = true
+        button.setImage(UIImage(named: "back"), for: .normal)
+        button.addGestureRecognizer(UITapGestureRecognizer(target: target, action: action))
+        button.isEnabled = true
+        button.snp.makeConstraints { make in
+            make.centerY.equalToSuperview()
+            make.left.equalToSuperview().offset(24)
+        }
+
+        return view
+    }
+    
     func generalButton(text: String,
                        buttonColor: UIColor = .primary0,
                        textColor: UIColor = .black,
@@ -85,13 +103,13 @@ class CustomView {
         
         view.addSubview(textField)
         textField.tag = 1
-        textField.textColor = .gray8
+        textField.textColor = .grey8
         if isSmall {
             textField.font = UIFont.notoReg(size: 16 * ratio)
-            textField.attributedPlaceholder = NSAttributedString(string: placeHolder, attributes: [NSAttributedString.Key.foregroundColor : UIColor.gray6, NSAttributedString.Key.font: UIFont.notoReg(size: 16 * ratio)])
+            textField.attributedPlaceholder = NSAttributedString(string: placeHolder, attributes: [NSAttributedString.Key.foregroundColor : UIColor.grey6, NSAttributedString.Key.font: UIFont.notoReg(size: 16 * ratio)])
         } else {
             textField.font = UIFont.notoBold(size: 24 * ratio)
-            textField.attributedPlaceholder = NSAttributedString(string: placeHolder, attributes: [NSAttributedString.Key.foregroundColor : UIColor.gray6, NSAttributedString.Key.font: UIFont.notoBold(size: 24 * ratio)])
+            textField.attributedPlaceholder = NSAttributedString(string: placeHolder, attributes: [NSAttributedString.Key.foregroundColor : UIColor.grey6, NSAttributedString.Key.font: UIFont.notoBold(size: 24 * ratio)])
         }
         textField.delegate = target as? UITextFieldDelegate
         textField.addTarget(target, action: action, for: .editingChanged)
