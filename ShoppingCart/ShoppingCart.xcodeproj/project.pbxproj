@@ -10,6 +10,18 @@
 		3158ECA325FAD8460058B98C /* Global.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3158ECA225FAD8460058B98C /* Global.swift */; };
 		3158ECB225FAD9CC0058B98C /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3158ECB125FAD9CC0058B98C /* Coordinator.swift */; };
 		3158ECBA25FAD9DD0058B98C /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3158ECB925FAD9DD0058B98C /* MainCoordinator.swift */; };
+		3158ECC025FADE1E0058B98C /* CustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3158ECBF25FADE1E0058B98C /* CustomView.swift */; };
+		3158ECC625FADE630058B98C /* UIFont+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3158ECC525FADE630058B98C /* UIFont+.swift */; };
+		3158ECCE25FADE6E0058B98C /* UIColor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3158ECCD25FADE6E0058B98C /* UIColor+.swift */; };
+		3158ECE225FADF0B0058B98C /* BlackHanSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3158ECD425FADF0B0058B98C /* BlackHanSans-Regular.ttf */; };
+		3158ECE525FADF0B0058B98C /* NotoSansCJK-Black.ttc in Resources */ = {isa = PBXBuildFile; fileRef = 3158ECD725FADF0B0058B98C /* NotoSansCJK-Black.ttc */; };
+		3158ECE725FADF0B0058B98C /* OTEnjoystoriesM.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3158ECD925FADF0B0058B98C /* OTEnjoystoriesM.otf */; };
+		3158ECE825FADF0B0058B98C /* NotoSansCJKkr-DemiLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3158ECDA25FADF0B0058B98C /* NotoSansCJKkr-DemiLight.ttf */; };
+		3158ECE925FADF0B0058B98C /* NotoSansCJKkr-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3158ECDB25FADF0B0058B98C /* NotoSansCJKkr-Bold.ttf */; };
+		3158ECEB25FADF0B0058B98C /* NotoSansCJKkr-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3158ECDD25FADF0B0058B98C /* NotoSansCJKkr-Regular.ttf */; };
+		3158ECEC25FADF0B0058B98C /* NotoSansCJKkr-Thin.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3158ECDE25FADF0B0058B98C /* NotoSansCJKkr-Thin.otf */; };
+		3158ECED25FADF0B0058B98C /* NotoSansCJKkr-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3158ECDF25FADF0B0058B98C /* NotoSansCJKkr-Regular.otf */; };
+		3158ECEE25FADF0B0058B98C /* NotoSansCJKkr-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3158ECE025FADF0B0058B98C /* NotoSansCJKkr-Bold.otf */; };
 		31712FE525FAAE9900BFA25E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31712FE425FAAE9900BFA25E /* AppDelegate.swift */; };
 		31712FE725FAAE9900BFA25E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31712FE625FAAE9900BFA25E /* SceneDelegate.swift */; };
 		31712FE925FAAE9900BFA25E /* SplashVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31712FE825FAAE9900BFA25E /* SplashVC.swift */; };
@@ -43,6 +55,18 @@
 		3158ECA225FAD8460058B98C /* Global.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Global.swift; sourceTree = "<group>"; };
 		3158ECB125FAD9CC0058B98C /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		3158ECB925FAD9DD0058B98C /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
+		3158ECBF25FADE1E0058B98C /* CustomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomView.swift; sourceTree = "<group>"; };
+		3158ECC525FADE630058B98C /* UIFont+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+.swift"; sourceTree = "<group>"; };
+		3158ECCD25FADE6E0058B98C /* UIColor+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+.swift"; sourceTree = "<group>"; };
+		3158ECD425FADF0B0058B98C /* BlackHanSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "BlackHanSans-Regular.ttf"; sourceTree = "<group>"; };
+		3158ECD725FADF0B0058B98C /* NotoSansCJK-Black.ttc */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansCJK-Black.ttc"; sourceTree = "<group>"; };
+		3158ECD925FADF0B0058B98C /* OTEnjoystoriesM.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = OTEnjoystoriesM.otf; sourceTree = "<group>"; };
+		3158ECDA25FADF0B0058B98C /* NotoSansCJKkr-DemiLight.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansCJKkr-DemiLight.ttf"; sourceTree = "<group>"; };
+		3158ECDB25FADF0B0058B98C /* NotoSansCJKkr-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansCJKkr-Bold.ttf"; sourceTree = "<group>"; };
+		3158ECDD25FADF0B0058B98C /* NotoSansCJKkr-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansCJKkr-Regular.ttf"; sourceTree = "<group>"; };
+		3158ECDE25FADF0B0058B98C /* NotoSansCJKkr-Thin.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansCJKkr-Thin.otf"; sourceTree = "<group>"; };
+		3158ECDF25FADF0B0058B98C /* NotoSansCJKkr-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansCJKkr-Regular.otf"; sourceTree = "<group>"; };
+		3158ECE025FADF0B0058B98C /* NotoSansCJKkr-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansCJKkr-Bold.otf"; sourceTree = "<group>"; };
 		31712FE125FAAE9900BFA25E /* ShoppingCart.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ShoppingCart.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		31712FE425FAAE9900BFA25E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		31712FE625FAAE9900BFA25E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -96,6 +120,39 @@
 			path = Coordinator;
 			sourceTree = "<group>";
 		};
+		3158ECBE25FADDE80058B98C /* CustomView */ = {
+			isa = PBXGroup;
+			children = (
+				3158ECBF25FADE1E0058B98C /* CustomView.swift */,
+			);
+			path = CustomView;
+			sourceTree = "<group>";
+		};
+		3158ECC425FADE4F0058B98C /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				3158ECC525FADE630058B98C /* UIFont+.swift */,
+				3158ECCD25FADE6E0058B98C /* UIColor+.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		3158ECD225FADF0B0058B98C /* Font */ = {
+			isa = PBXGroup;
+			children = (
+				3158ECD425FADF0B0058B98C /* BlackHanSans-Regular.ttf */,
+				3158ECD725FADF0B0058B98C /* NotoSansCJK-Black.ttc */,
+				3158ECD925FADF0B0058B98C /* OTEnjoystoriesM.otf */,
+				3158ECDA25FADF0B0058B98C /* NotoSansCJKkr-DemiLight.ttf */,
+				3158ECDB25FADF0B0058B98C /* NotoSansCJKkr-Bold.ttf */,
+				3158ECDD25FADF0B0058B98C /* NotoSansCJKkr-Regular.ttf */,
+				3158ECDE25FADF0B0058B98C /* NotoSansCJKkr-Thin.otf */,
+				3158ECDF25FADF0B0058B98C /* NotoSansCJKkr-Regular.otf */,
+				3158ECE025FADF0B0058B98C /* NotoSansCJKkr-Bold.otf */,
+			);
+			path = Font;
+			sourceTree = "<group>";
+		};
 		31712FD825FAAE9900BFA25E = {
 			isa = PBXGroup;
 			children = (
@@ -121,11 +178,11 @@
 		31712FE325FAAE9900BFA25E /* ShoppingCart */ = {
 			isa = PBXGroup;
 			children = (
-				3171301F25FAAEAE00BFA25E /* MainTab */,
-				3171301E25FAAEA600BFA25E /* Authentication */,
 				3171301A25FAAEA000BFA25E /* Application */,
-				31712FF225FAAE9A00BFA25E /* LaunchScreen.storyboard */,
-				31712FED25FAAE9900BFA25E /* ShoppingCart.xcdatamodeld */,
+				3171301E25FAAEA600BFA25E /* Authentication */,
+				3171301F25FAAEAE00BFA25E /* MainTab */,
+				3158ECBE25FADDE80058B98C /* CustomView */,
+				3158ECC425FADE4F0058B98C /* Extension */,
 			);
 			path = ShoppingCart;
 			sourceTree = "<group>";
@@ -151,12 +208,15 @@
 		3171301A25FAAEA000BFA25E /* Application */ = {
 			isa = PBXGroup;
 			children = (
-				3158ECB025FAD9BE0058B98C /* Coordinator */,
-				31712FF525FAAE9A00BFA25E /* Info.plist */,
-				31712FF025FAAE9A00BFA25E /* Assets.xcassets */,
+				3158ECD225FADF0B0058B98C /* Font */,
 				31712FE425FAAE9900BFA25E /* AppDelegate.swift */,
 				31712FE625FAAE9900BFA25E /* SceneDelegate.swift */,
 				3158ECA225FAD8460058B98C /* Global.swift */,
+				3158ECB025FAD9BE0058B98C /* Coordinator */,
+				31712FED25FAAE9900BFA25E /* ShoppingCart.xcdatamodeld */,
+				31712FF225FAAE9A00BFA25E /* LaunchScreen.storyboard */,
+				31712FF525FAAE9A00BFA25E /* Info.plist */,
+				31712FF025FAAE9A00BFA25E /* Assets.xcassets */,
 			);
 			path = Application;
 			sourceTree = "<group>";
@@ -298,8 +358,17 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3158ECE225FADF0B0058B98C /* BlackHanSans-Regular.ttf in Resources */,
 				31712FF425FAAE9A00BFA25E /* LaunchScreen.storyboard in Resources */,
+				3158ECEE25FADF0B0058B98C /* NotoSansCJKkr-Bold.otf in Resources */,
+				3158ECE925FADF0B0058B98C /* NotoSansCJKkr-Bold.ttf in Resources */,
+				3158ECE525FADF0B0058B98C /* NotoSansCJK-Black.ttc in Resources */,
 				31712FF125FAAE9A00BFA25E /* Assets.xcassets in Resources */,
+				3158ECEC25FADF0B0058B98C /* NotoSansCJKkr-Thin.otf in Resources */,
+				3158ECED25FADF0B0058B98C /* NotoSansCJKkr-Regular.otf in Resources */,
+				3158ECE725FADF0B0058B98C /* OTEnjoystoriesM.otf in Resources */,
+				3158ECEB25FADF0B0058B98C /* NotoSansCJKkr-Regular.ttf in Resources */,
+				3158ECE825FADF0B0058B98C /* NotoSansCJKkr-DemiLight.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -367,12 +436,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				31712FE925FAAE9900BFA25E /* SplashVC.swift in Sources */,
+				3158ECC625FADE630058B98C /* UIFont+.swift in Sources */,
+				3158ECC025FADE1E0058B98C /* CustomView.swift in Sources */,
 				3158ECBA25FAD9DD0058B98C /* MainCoordinator.swift in Sources */,
 				31712FE525FAAE9900BFA25E /* AppDelegate.swift in Sources */,
 				3158ECB225FAD9CC0058B98C /* Coordinator.swift in Sources */,
 				31712FE725FAAE9900BFA25E /* SceneDelegate.swift in Sources */,
 				3158ECA325FAD8460058B98C /* Global.swift in Sources */,
 				31712FEF25FAAE9900BFA25E /* ShoppingCart.xcdatamodeld in Sources */,
+				3158ECCE25FADE6E0058B98C /* UIColor+.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
