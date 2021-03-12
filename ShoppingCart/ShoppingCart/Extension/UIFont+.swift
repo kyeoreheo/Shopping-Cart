@@ -20,10 +20,6 @@ extension UIFont {
         return UIFont(name: "NotoSansCJKkr-Bold", size: size)!
     }
     
-    static func notoBlack(size: CGFloat) -> UIFont {
-        return UIFont(name: "NotoSansCJKkr-Black", size: size)!
-    }
-    
     static func hanSanReg(size: CGFloat) -> UIFont {
         return UIFont(name: "BlackHanSans-Regular", size: size)!
     }

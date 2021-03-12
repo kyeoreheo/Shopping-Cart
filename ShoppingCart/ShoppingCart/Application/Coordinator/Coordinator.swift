@@ -19,7 +19,7 @@ enum Transaction {
 protocol Coordinator {
     var navigationController: UINavigationController? { get set }
     
-    func pop()
+    func popVC()
     func push(_ viewController: Coordinating & UIViewController, viewModel: ViewModel?)
     func fullScreen(_ viewController: Coordinating & UIViewController, currentView: Coordinating & UIViewController, viewModel: ViewModel?)
     func start()

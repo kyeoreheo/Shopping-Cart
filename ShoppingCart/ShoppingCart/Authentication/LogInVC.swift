@@ -9,23 +9,20 @@ import UIKit
 
 class LogInVC: UIViewController, UIGestureRecognizerDelegate, Coordinating {
     // MARK:- View Components
-    private let titleLabel = UILabel()
+    private lazy var header = CustomView.shared.header(headerType: .back, target: self, action: #selector(popVC))
     private lazy var emailTextField = CustomView.shared.textField(placeHolder: "Email", target: self, action: #selector(emailTextFieldDidChange), type: .email)
     private lazy var passwordTextField = CustomView.shared.textField(placeHolder: "Password", target: self, action: #selector(passwordTextFieldDidchange), type: .password, buttonAction: #selector(toggleEyeButton))
     private lazy var logInButton = CustomView.shared.generalButton(text: "Log In", isActive: false, target: self, action: #selector(logIn))
+    private let titleLabel = UILabel()
     private let warningLabel = UILabel()
     private let bottomLabel = UILabel()
-    private let signUpLabel = UILabel()
-    private let signUpButton = UIButton()
-    private lazy var header = CustomView.shared.header(headerType: .back, target: self, action: #selector(popVC))
     
     // MARK:- Properties
     var coordinator: Coordinator? //<- main nav
-
     private var isPasswodHideen = true
     private var buttonConstraint: NSLayoutConstraint?
-    var email = ""
-    var password = ""
+    private var email = ""
+    private var password = ""
 
     // MARK:- LifeCycles
     override func viewDidLoad() {
@@ -50,7 +47,6 @@ class LogInVC: UIViewController, UIGestureRecognizerDelegate, Coordinating {
     
     private func configureUI() {
         view.addSubview(header)
-        header.backgroundColor = .orange
         header.snp.makeConstraints { make in
             make.height.equalTo(50 * ratio)
             make.left.right.equalToSuperview()
@@ -63,7 +59,7 @@ class LogInVC: UIViewController, UIGestureRecognizerDelegate, Coordinating {
         titleLabel.font = UIFont.boldSystemFont(ofSize: 36 * ratio)
         titleLabel.snp.makeConstraints { make in
             make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(50)
-            make.left.equalToSuperview().offset(30)
+            make.left.equalToSuperview().offset(24)
         }
         
         view.addSubview(emailTextField)
@@ -90,27 +86,6 @@ class LogInVC: UIViewController, UIGestureRecognizerDelegate, Coordinating {
             make.top.equalTo(passwordTextField.snp.bottom).offset(8)
             make.left.equalToSuperview().offset(30)
             make.right.equalToSuperview().offset(-30)
-        }
-    
-        view.addSubview(signUpLabel)
-        signUpLabel.text = "Have no account?  Sing Up!"
-        signUpLabel.textColor = .gray
-        signUpLabel.font = UIFont.systemFont(ofSize: 12 * ratio)
-        signUpLabel.snp.makeConstraints { make in
-            make.centerX.equalToSuperview()
-            make.top.equalTo(passwordTextField.snp.bottom).offset(24)
-        }
-        
-        view.addSubview(signUpButton)
-        signUpButton.backgroundColor = .white
-        signUpButton.addTarget(self, action: #selector(presentSignUpVC), for: .touchUpInside)
-        signUpButton.setTitle("Sign Up!", for: .normal)
-        signUpButton.titleLabel?.underline()
-        signUpButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 12 * ratio)
-        signUpButton.setTitleColor(.orange, for: .normal)
-        signUpButton.snp.makeConstraints { make in
-            make.right.equalTo(signUpLabel.snp.right)
-            make.centerY.equalTo(signUpLabel.snp.centerY)
         }
         
         view.addSubview(logInButton)
@@ -158,10 +133,6 @@ class LogInVC: UIViewController, UIGestureRecognizerDelegate, Coordinating {
     
     @objc func presentSignUpVC() {
 //        navigationController?.pushViewController(SignUpVC(), animated: true)
-    }
-    
-    @objc func popVC() {
-        coordinator?.pop()
     }
     
     // MARK:- Keyboard

@@ -32,6 +32,8 @@
 		31712FF425FAAE9A00BFA25E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 31712FF225FAAE9A00BFA25E /* LaunchScreen.storyboard */; };
 		31712FFF25FAAE9A00BFA25E /* ShoppingCartTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31712FFE25FAAE9A00BFA25E /* ShoppingCartTests.swift */; };
 		3171300A25FAAE9B00BFA25E /* ShoppingCartUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3171300925FAAE9B00BFA25E /* ShoppingCartUITests.swift */; };
+		31EFA06D25FC1637007AD0B0 /* SignUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31EFA06C25FC1637007AD0B0 /* SignUpVC.swift */; };
+		31EFA07225FC1813007AD0B0 /* UIViewController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31EFA07125FC1813007AD0B0 /* UIViewController+.swift */; };
 		55D17DC582401064D5DBC211 /* Pods_ShoppingCart.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2104EC1D14BCAC62ED0E9E42 /* Pods_ShoppingCart.framework */; };
 /* End PBXBuildFile section */
 
@@ -85,6 +87,8 @@
 		3171300525FAAE9B00BFA25E /* ShoppingCartUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ShoppingCartUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3171300925FAAE9B00BFA25E /* ShoppingCartUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingCartUITests.swift; sourceTree = "<group>"; };
 		3171300B25FAAE9B00BFA25E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		31EFA06C25FC1637007AD0B0 /* SignUpVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpVC.swift; sourceTree = "<group>"; };
+		31EFA07125FC1813007AD0B0 /* UIViewController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+.swift"; sourceTree = "<group>"; };
 		3880303910B854CFE4F99C40 /* Pods-ShoppingCart.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShoppingCart.release.xcconfig"; path = "Target Support Files/Pods-ShoppingCart/Pods-ShoppingCart.release.xcconfig"; sourceTree = "<group>"; };
 		6AC5E9B0C969A46FE5247089 /* Pods-ShoppingCart.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShoppingCart.debug.xcconfig"; path = "Target Support Files/Pods-ShoppingCart/Pods-ShoppingCart.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -138,6 +142,7 @@
 				3158ECC525FADE630058B98C /* UIFont+.swift */,
 				3158ECCD25FADE6E0058B98C /* UIColor+.swift */,
 				3158ED2225FB09230058B98C /* UILabel+.swift */,
+				31EFA07125FC1813007AD0B0 /* UIViewController+.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -231,6 +236,7 @@
 			children = (
 				31712FE825FAAE9900BFA25E /* SplashVC.swift */,
 				3158ED1D25FB089B0058B98C /* LogInVC.swift */,
+				31EFA06C25FC1637007AD0B0 /* SignUpVC.swift */,
 			);
 			path = Authentication;
 			sourceTree = "<group>";
@@ -441,6 +447,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				31EFA07225FC1813007AD0B0 /* UIViewController+.swift in Sources */,
 				31712FE925FAAE9900BFA25E /* SplashVC.swift in Sources */,
 				3158ECC625FADE630058B98C /* UIFont+.swift in Sources */,
 				3158ECC025FADE1E0058B98C /* CustomView.swift in Sources */,
@@ -451,6 +458,7 @@
 				31712FE725FAAE9900BFA25E /* SceneDelegate.swift in Sources */,
 				3158ECA325FAD8460058B98C /* Global.swift in Sources */,
 				3158ED1E25FB089B0058B98C /* LogInVC.swift in Sources */,
+				31EFA06D25FC1637007AD0B0 /* SignUpVC.swift in Sources */,
 				31712FEF25FAAE9900BFA25E /* ShoppingCart.xcdatamodeld in Sources */,
 				3158ECCE25FADE6E0058B98C /* UIColor+.swift in Sources */,
 			);

@@ -16,7 +16,7 @@ class SplashVC: UIViewController, Coordinating {
     private lazy var logInButton = CustomView.shared.generalButton(
             text: "Log In", isActive: false, target: self, action: #selector(logInTapped))
     private lazy var signUpButton = CustomView.shared.generalButton(
-        text: "Sign Up", target: self, action: #selector(signUpTapped))
+            text: "Sign Up", target: self, action: #selector(signUpTapped))
     
     // MARK:- Lifecycles
     override func viewDidLoad() {
@@ -82,6 +82,7 @@ class SplashVC: UIViewController, Coordinating {
     }
     
     @objc func signUpTapped() {
+        coordinator?.push(SignUpVC(), viewModel: nil)
         print("DEBUG:- signUp Tapped")
     }
 }
