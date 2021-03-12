@@ -31,6 +31,7 @@ class SplashVC: UIViewController, Coordinating {
         frameWidth = view.frame.width
         frameHeight = view.frame.height
         ratio = (frameHeight / 812) < 1 ? 1 : (frameHeight / 812)
+        isBigPhone = view.frame.height > 750.0
     }
     
     private func configureUI() {
@@ -76,6 +77,7 @@ class SplashVC: UIViewController, Coordinating {
     }
     // MARK:- Helpers
     @objc func logInTapped() {
+        coordinator?.push(LogInVC(), viewModel: nil)
         print("DEBUG:- logInTapped")
     }
     
