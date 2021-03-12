@@ -11,9 +11,10 @@ class CustomView {
     static let shared = CustomView()
     private init() { }
     
-    func generalButton(isActive: Bool, text: String = "text here",
+    func generalButton(text: String,
                        buttonColor: UIColor = .primary0,
                        textColor: UIColor = .black,
+                       isActive: Bool = true,
                        target: Any, action: Selector) -> UIButton {
         let button = UIButton(type: .system)
 
@@ -25,7 +26,7 @@ class CustomView {
         button.setTitle(text, for:.normal)
         button.titleLabel?.font = UIFont.notoBold(size: 14 * ratio)
         button.addGestureRecognizer(UITapGestureRecognizer(target: target, action: action))
-        button.isEnabled = isActive
+        //button.isEnabled = isActive
 
         return button
     }
