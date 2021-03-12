@@ -11,7 +11,7 @@ import UIKit
 class MainCoordinator: Coordinator {
     var navigationController: UINavigationController?
     
-    func pop() {
+    func popVC() {
         navigationController?.popViewController(animated: true)
     }
     

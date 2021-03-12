@@ -16,12 +16,14 @@ class CustomView {
         let button = UIButton()
         
         view.addSubview(button)
-        button.backgroundColor = .blue
         button.isUserInteractionEnabled = true
-        button.setImage(UIImage(named: "back"), for: .normal)
+        button.setImage(UIImage(named: "arrowLeft")?.withRenderingMode(.alwaysTemplate), for: .normal)
+        button.tintColor = .black
         button.addGestureRecognizer(UITapGestureRecognizer(target: target, action: action))
         button.isEnabled = true
+        button.imageView?.contentMode = .scaleAspectFill
         button.snp.makeConstraints { make in
+            make.width.height.equalTo(30 * ratio)
             make.centerY.equalToSuperview()
             make.left.equalToSuperview().offset(24)
         }
