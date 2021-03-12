@@ -15,13 +15,13 @@ class MainCoordinator: Coordinator {
         navigationController?.popViewController(animated: true)
     }
     
-    func push(_ viewController: Coordinating & UIViewController) {
+    func push(_ viewController: Coordinating & UIViewController, viewModel: ViewModel? = nil) {
         var vc = viewController
         vc.coordinator = self
         navigationController?.pushViewController(vc, animated: true)
     }
     
-    func fullScreen(_ viewController: Coordinating & UIViewController, currentView: Coordinating & UIViewController) {
+    func fullScreen(_ viewController: Coordinating & UIViewController, currentView: Coordinating & UIViewController, viewModel: ViewModel? = nil) {
         
         var vc = viewController
         vc.coordinator = self
