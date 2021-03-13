@@ -118,7 +118,6 @@ class SignUpVC: UIViewController, UIGestureRecognizerDelegate, Coordinating {
             make.top.equalTo(passwordTextField.snp.bottom).offset(-16)
             make.left.equalToSuperview().offset(24)
         }
-      
         
         view.addSubview(registerButton)
         buttonConstraint = registerButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: 0)
@@ -127,7 +126,7 @@ class SignUpVC: UIViewController, UIGestureRecognizerDelegate, Coordinating {
             make.height.equalTo(56 * ratio)
             make.left.equalToSuperview().offset(24)
             make.right.equalToSuperview().offset(-24)
-            make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).offset(-16)
+            make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).offset(16)
         }
         
     }
@@ -143,6 +142,14 @@ class SignUpVC: UIViewController, UIGestureRecognizerDelegate, Coordinating {
         userNameWarningLabel.text = username.count > 0 ? "" : "Invaild User name"
         emailWarningLabel.text = isValidEmail(email) ? "" : "Invalid Email"
         passwordWarningLabel.text = (Int(password) ?? 0 >= 8) ? "" : "Invalid Password"
+        
+        API.shared.registerUesr(name: username, email: email, mobile: "1234449999", password: password) { [weak self] response in
+            guard let strongSelf = self,
+                  let response = response
+            else { return }
+            print("DEBUG:- \(response)")
+            
+        }
     }
 
     @objc func textFieldDidChange(_ textField: UITextField) {

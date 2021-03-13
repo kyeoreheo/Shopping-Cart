@@ -5,7 +5,6 @@ target 'ShoppingCart' do
   # Comment the next line if you don't want to use dynamic frameworks
   use_frameworks!
   pod 'SnapKit'
-  pod 'Alamofire', '~> 5.2'
-  pod 'IQKeyboardManagerSwift' 
+  pod 'Alamofire', '~> 4.9.1'
 
 end
