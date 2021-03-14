@@ -22,11 +22,15 @@ class SplashVC: UIViewController, Coordinating {
     override func viewDidLoad() {
         super.viewDidLoad()
         applyGlobal()
+        configure()
         configureUI()
         view.backgroundColor = .black
     }
     
     // MARK:- Configures
+    private func configure() {
+        logInButton.isEnabled = true
+    }
     private func applyGlobal() {
         frameWidth = view.frame.width
         frameHeight = view.frame.height
@@ -77,7 +81,7 @@ class SplashVC: UIViewController, Coordinating {
     }
     // MARK:- Helpers
     @objc func logInTapped() {
-        coordinator?.push(LogInVC())
+        coordinator?.push(LogInVC(coordinator: coordinator, viewModel: LogInVM()))
         print("DEBUG:- logInTapped")
     }
     

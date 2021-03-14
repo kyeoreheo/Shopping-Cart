@@ -26,7 +26,7 @@ class SignUpVC: UIViewController, UIGestureRecognizerDelegate, Coordinating {
                      action: #selector(textFieldDidChange), type: .password,
                      buttonAction: #selector(toggleEyeButton))
     private lazy var registerButton = CustomView.shared.generalButton(
-                     text: "Register", isActive: true, target: self,
+                     text: "Register", isActive: false, target: self,
                      action: #selector(registerUser))
     private lazy var popUpModal = CustomView.shared.popUpModal(message: "Successfully Registerd",
                      buttonText: "Confirm", action: #selector(togglePopUP), target: self)
@@ -166,7 +166,16 @@ class SignUpVC: UIViewController, UIGestureRecognizerDelegate, Coordinating {
         }
 
     }
-
+    
+    // MARK:- Helper
+    func activeButton(button: UIButton, _ isActive: Bool) {
+        button.backgroundColor = isActive ? .primary0 : .white
+        button.setTitleColor(isActive ? .black : .grey5, for: .normal)
+        button.layer.borderColor = UIColor.grey2.cgColor
+        button.layer.borderWidth = isActive ? 0 : 2
+        button.isEnabled = isActive
+    }
+    
     // MARK:- Selectors
     @objc func registerUser() {
         userNameWarningLabel.text = viewModel.isVaildUserName ? "" : "Invaild User name"
@@ -203,6 +212,7 @@ class SignUpVC: UIViewController, UIGestureRecognizerDelegate, Coordinating {
             viewModel.mobile = text
             mobileWarningLabel.text = ""
         }
+        activeButton(button: registerButton, viewModel.shouldActiveButton)
     }
     
     @objc func togglePopUP() {

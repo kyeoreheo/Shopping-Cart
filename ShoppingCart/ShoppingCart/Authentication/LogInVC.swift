@@ -9,25 +9,42 @@ import UIKit
 
 class LogInVC: UIViewController, UIGestureRecognizerDelegate, Coordinating {
     // MARK:- View Components
-    private lazy var header = CustomView.shared.header(headerType: .back, target: self, action: #selector(popVC))
-    private lazy var emailTextField = CustomView.shared.textField(placeHolder: "Email", target: self, action: #selector(emailTextFieldDidChange), type: .email)
-    private lazy var passwordTextField = CustomView.shared.textField(placeHolder: "Password", target: self, action: #selector(passwordTextFieldDidchange), type: .password, buttonAction: #selector(toggleEyeButton))
-    private lazy var logInButton = CustomView.shared.generalButton(text: "Log In", isActive: false, target: self, action: #selector(logIn))
+    private lazy var header = CustomView.shared.header(headerType: .back,
+                     target: self, action: #selector(popVC))
+    private lazy var mobileTextField = CustomView.shared.textField(
+                     placeHolder: "Email", target: self,
+                     action: #selector(textFieldDidChange), type: .email)
+    private lazy var passwordTextField = CustomView.shared.textField(
+                     placeHolder: "Password", target: self,
+                     action: #selector(textFieldDidChange), type: .password,
+                     buttonAction: #selector(toggleEyeButton))
+    private lazy var logInButton = CustomView.shared.generalButton(
+                     text: "Log In", isActive: false, target: self,
+                     action: #selector(logIn))
     private let titleLabel = UILabel()
     private let warningLabel = UILabel()
     private let bottomLabel = UILabel()
     
     // MARK:- Properties
     var coordinator: Coordinator? //<- main nav
+    private let viewModel: LogInVM
     private var isPasswodHideen = true
     private var buttonConstraint: NSLayoutConstraint?
-    private var email = ""
-    private var password = ""
 
     // MARK:- LifeCycles
+    init(coordinator: Coordinator?, viewModel: LogInVM) {
+        self.coordinator = coordinator
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        configureView()
+        configure()
         configureUI()
     }
     
@@ -40,8 +57,9 @@ class LogInVC: UIViewController, UIGestureRecognizerDelegate, Coordinating {
     }
     
     // MARK:- Configures
-    private func configureView() {
+    private func configure() {
         view.backgroundColor = .white
+        //        logInButton.isUserInteractionEnabled = true
         warningLabel.isHidden = true
     }
     
@@ -62,8 +80,8 @@ class LogInVC: UIViewController, UIGestureRecognizerDelegate, Coordinating {
             make.left.equalToSuperview().offset(24)
         }
         
-        view.addSubview(emailTextField)
-        emailTextField.snp.makeConstraints { make in
+        view.addSubview(mobileTextField)
+        mobileTextField.snp.makeConstraints { make in
             make.height.equalTo(36 * ratio)
             make.top.equalTo(titleLabel.snp.bottom).offset(50)
             make.left.equalToSuperview().offset(30)
@@ -73,7 +91,7 @@ class LogInVC: UIViewController, UIGestureRecognizerDelegate, Coordinating {
         view.addSubview(passwordTextField)
         passwordTextField.snp.makeConstraints { make in
             make.height.equalTo(36 * ratio)
-            make.top.equalTo(emailTextField.snp.bottom).offset(30)
+            make.top.equalTo(mobileTextField.snp.bottom).offset(30)
             make.left.equalToSuperview().offset(30)
             make.right.equalToSuperview().offset(-30)
         }
@@ -98,16 +116,27 @@ class LogInVC: UIViewController, UIGestureRecognizerDelegate, Coordinating {
             make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).offset(-16)
         }
     }
+    
+    // MAKR:- Helper
+    func activeButton(button: UIButton, _ isActive: Bool) {
+        button.backgroundColor = isActive ? .primary0 : .white
+        button.setTitleColor(isActive ? .black : .grey5, for: .normal)
+        button.layer.borderColor = UIColor.grey2.cgColor
+        button.layer.borderWidth = isActive ? 0 : 2
+        button.isEnabled = isActive
+    }
 
     // MARK:- Selectors
-    @objc func emailTextFieldDidChange(_ textField: UITextField) {
-        guard let email = textField.text else { return }
-        self.email = email
-    }
-    
-    @objc func passwordTextFieldDidchange(_ textField: UITextField) {
-        guard let password = textField.text else { return }
-        self.password = password
+    @objc func textFieldDidChange(_ textField: UITextField) {
+        guard let text = textField.text else { return }
+        if textField == mobileTextField.viewWithTag(1) {
+            viewModel.mobile = text
+            warningLabel.text = ""
+        } else if textField == passwordTextField.viewWithTag(1) {
+            viewModel.password = text
+            warningLabel.text = ""
+        }
+        activeButton(button: logInButton, viewModel.shouldActiveButton)
     }
     
     @objc func toggleEyeButton() {
@@ -126,11 +155,17 @@ class LogInVC: UIViewController, UIGestureRecognizerDelegate, Coordinating {
     }
     
     @objc func logIn() {
-        let lowerCaseEmail = email.lowercased()
-    }
-    
-    @objc func presentSignUpVC() {
-//        navigationController?.pushViewController(SignUpVC(), animated: true)
+        warningLabel.text = viewModel.isValidForm ? "" : "Invalid mobile or password"
+            
+        if viewModel.isValidForm {
+            API.shared.logIn(mobile: viewModel.mobile,
+                             password: viewModel.password) { [weak self] response in
+                guard let strongSelf = self,
+                      let response = response
+                else { return }
+                print("DEBUG:- \(response)")
+            }
+        }
     }
     
     // MARK:- Keyboard
