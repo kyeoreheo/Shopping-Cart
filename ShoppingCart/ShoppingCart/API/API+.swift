@@ -40,7 +40,6 @@ extension API {
             case .failure(_):
                 completion(nil)
             }
-            
         }
     }
 }

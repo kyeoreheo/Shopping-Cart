@@ -20,7 +20,7 @@ protocol Coordinator {
     var navigationController: UINavigationController? { get set }
     
     func popVC()
-    func push(_ viewController: Coordinating & UIViewController, viewModel: ViewModel?)
+    func push(_ viewController: Coordinating & UIViewController)
     func fullScreen(_ viewController: Coordinating & UIViewController, currentView: Coordinating & UIViewController, viewModel: ViewModel?)
     func start()
 }

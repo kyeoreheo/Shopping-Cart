@@ -14,8 +14,6 @@ var isBigPhone = false
 
 enum TextFieldType {
     case phone
-    case address
-    case card
     case password
     case email
     case name
