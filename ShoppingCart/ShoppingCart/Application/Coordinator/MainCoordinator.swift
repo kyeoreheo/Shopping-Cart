@@ -15,9 +15,9 @@ class MainCoordinator: Coordinator {
         navigationController?.popViewController(animated: true)
     }
     
-    func push(_ viewController: Coordinating & UIViewController, viewModel: ViewModel? = nil) {
+    func push(_ viewController: Coordinating & UIViewController) {
         var vc = viewController
-        vc.coordinator = self
+        //vc.coordinator = self
         navigationController?.pushViewController(vc, animated: true)
     }
     

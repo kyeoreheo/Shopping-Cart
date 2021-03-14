@@ -33,6 +33,7 @@
 		31712FFF25FAAE9A00BFA25E /* ShoppingCartTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31712FFE25FAAE9A00BFA25E /* ShoppingCartTests.swift */; };
 		3171300A25FAAE9B00BFA25E /* ShoppingCartUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3171300925FAAE9B00BFA25E /* ShoppingCartUITests.swift */; };
 		319644CE25FD5FD6006F7E83 /* API+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 319644CD25FD5FD6006F7E83 /* API+.swift */; };
+		319644FB25FD7C11006F7E83 /* AuthenticationVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 319644FA25FD7C11006F7E83 /* AuthenticationVM.swift */; };
 		31EFA06D25FC1637007AD0B0 /* SignUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31EFA06C25FC1637007AD0B0 /* SignUpVC.swift */; };
 		31EFA07225FC1813007AD0B0 /* UIViewController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31EFA07125FC1813007AD0B0 /* UIViewController+.swift */; };
 		31EFA07E25FC8E02007AD0B0 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31EFA07D25FC8E02007AD0B0 /* API.swift */; };
@@ -90,6 +91,7 @@
 		3171300925FAAE9B00BFA25E /* ShoppingCartUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingCartUITests.swift; sourceTree = "<group>"; };
 		3171300B25FAAE9B00BFA25E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		319644CD25FD5FD6006F7E83 /* API+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "API+.swift"; sourceTree = "<group>"; };
+		319644FA25FD7C11006F7E83 /* AuthenticationVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationVM.swift; sourceTree = "<group>"; };
 		31EFA06C25FC1637007AD0B0 /* SignUpVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpVC.swift; sourceTree = "<group>"; };
 		31EFA07125FC1813007AD0B0 /* UIViewController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+.swift"; sourceTree = "<group>"; };
 		31EFA07D25FC8E02007AD0B0 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
@@ -239,6 +241,7 @@
 		3171301E25FAAEA600BFA25E /* Authentication */ = {
 			isa = PBXGroup;
 			children = (
+				319644FA25FD7C11006F7E83 /* AuthenticationVM.swift */,
 				31712FE825FAAE9900BFA25E /* SplashVC.swift */,
 				3158ED1D25FB089B0058B98C /* LogInVC.swift */,
 				31EFA06C25FC1637007AD0B0 /* SignUpVC.swift */,
@@ -468,6 +471,7 @@
 				31EFA07E25FC8E02007AD0B0 /* API.swift in Sources */,
 				3158ECBA25FAD9DD0058B98C /* MainCoordinator.swift in Sources */,
 				31712FE525FAAE9900BFA25E /* AppDelegate.swift in Sources */,
+				319644FB25FD7C11006F7E83 /* AuthenticationVM.swift in Sources */,
 				3158ECB225FAD9CC0058B98C /* Coordinator.swift in Sources */,
 				3158ED2325FB09230058B98C /* UILabel+.swift in Sources */,
 				31712FE725FAAE9900BFA25E /* SceneDelegate.swift in Sources */,

@@ -103,13 +103,11 @@ class LogInVC: UIViewController, UIGestureRecognizerDelegate, Coordinating {
     @objc func emailTextFieldDidChange(_ textField: UITextField) {
         guard let email = textField.text else { return }
         self.email = email
-//        viewModel.checkLogInFormat()
     }
     
     @objc func passwordTextFieldDidchange(_ textField: UITextField) {
         guard let password = textField.text else { return }
         self.password = password
-//        viewModel.checkLogInFormat()
     }
     
     @objc func toggleEyeButton() {

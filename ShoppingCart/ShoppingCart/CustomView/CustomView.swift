@@ -46,7 +46,7 @@ class CustomView {
         button.setTitle(text, for:.normal)
         button.titleLabel?.font = UIFont.notoBold(size: 14 * ratio)
         button.addGestureRecognizer(UITapGestureRecognizer(target: target, action: action))
-        //button.isEnabled = isActive
+        button.isEnabled = isActive
 
         return button
     }
@@ -118,14 +118,14 @@ class CustomView {
         textField.autocorrectionType = .no
         
         switch type {
-        case .phone, .card:
+        case .phone:
             textField.keyboardType = .numberPad
         case .email:
             textField.keyboardType = .emailAddress
         case .password:
             textField.keyboardType = .default
             textField.isSecureTextEntry = true
-        case .address, .name:
+        case .name:
             textField.keyboardType = .default
         }
 
@@ -229,6 +229,55 @@ class CustomView {
         return view
     }
     
-    
+    func popUpModal(message: String, buttonText: String, action: Selector, target: Any) -> UIView {
+        let view = UIView()
+        let coverView = UIView()
+        let frameView = UIView()
+        let messageLabel = UILabel()
+        let button = UIButton()
+        view.backgroundColor = .clear
+        view.addSubview(coverView)
+        coverView.backgroundColor = .black
+        coverView.alpha = 0.4
+        coverView.snp.makeConstraints { make in
+            make.top.left.bottom.right.equalToSuperview()
+        }
+
+        view.addSubview(frameView)
+        frameView.backgroundColor = .white
+        frameView.clipsToBounds = true
+        frameView.layer.cornerRadius = 10
+        frameView.snp.makeConstraints { make in
+            make.center.equalToSuperview()
+            make.width.equalTo(250)
+            make.height.equalTo(250)
+        }
+
+        frameView.addSubview(messageLabel)
+        messageLabel.text = message
+        messageLabel.textColor = .black
+        messageLabel.numberOfLines = 0
+        messageLabel.textAlignment = .center
+        messageLabel.font = UIFont.boldSystemFont(ofSize: 24)
+        messageLabel.snp.makeConstraints { make in
+//            make.centerX.equalToSuperview()
+            make.left.equalToSuperview().offset(24)
+            make.right.equalToSuperview().offset(-24)
+            make.centerY.equalToSuperview().offset(-20)
+        }
+
+        frameView.addSubview(button)
+        button.backgroundColor = .orange
+        button.setTitle(buttonText, for: .normal)
+        button.setTitleColor(.white, for: .normal)
+        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 18)
+        button.addTarget(target, action: action, for: .touchUpInside)
+        button.snp.makeConstraints { make in
+            make.height.equalTo(60)
+            make.left.right.bottom.equalToSuperview()
+        }
+        
+        return view
+    }
 }
 

@@ -10,58 +10,73 @@ import SnapKit
 
 class SignUpVC: UIViewController, UIGestureRecognizerDelegate, Coordinating {
     // MARK:- View components
-    private lazy var header = CustomView.shared.header(headerType: .back, target: self, action: #selector(popVC))
-    private let titleLabel = UILabel()
+    private lazy var header = CustomView.shared.header(
+                     headerType: .back, target: self, action: #selector(popVC))
     private lazy var usernameTextField = CustomView.shared.textField(
-        placeHolder: "Username", target: self, action: #selector(textFieldDidChange), type: .name)
+                     placeHolder: "Username", target: self,
+                     action: #selector(textFieldDidChange), type: .name)
     private lazy var emailTextField = CustomView.shared.textField(
-        placeHolder: "Email", target: self, action: #selector(textFieldDidChange), type: .email)
+                     placeHolder: "Email", target: self,
+                     action: #selector(textFieldDidChange), type: .email)
+    private lazy var mobileTextField = CustomView.shared.textField(
+                     placeHolder: "Mobile", target: self,
+                     action: #selector(textFieldDidChange), type: .phone)
     private lazy var passwordTextField = CustomView.shared.textField(
-        placeHolder: "Password", target: self, action: #selector(textFieldDidChange), type: .password, buttonAction: #selector(toggleEyeButton))
+                     placeHolder: "Password", target: self,
+                     action: #selector(textFieldDidChange), type: .password,
+                     buttonAction: #selector(toggleEyeButton))
     private lazy var registerButton = CustomView.shared.generalButton(
-        text: "Register", isActive: true, target: self, action: #selector(registerUser))
+                     text: "Register", isActive: true, target: self,
+                     action: #selector(registerUser))
+    private lazy var popUpModal = CustomView.shared.popUpModal(message: "Successfully Registerd",
+                     buttonText: "Confirm", action: #selector(togglePopUP), target: self)
+    private let titleLabel = UILabel()
     private let userNameWarningLabel = UILabel()
     private let emailWarningLabel = UILabel()
+    private let mobileWarningLabel = UILabel()
     private let passwordWarningLabel = UILabel()
 
-    
     // MARK:- Properties
     var coordinator: Coordinator?
+    private var viewModel: SignUpVM
     private var isPasswodHideen = true
     private var buttonConstraint: NSLayoutConstraint?
-    private var email = ""
-    private var password = ""
-    private var username = ""
 
     // MARK:- LifeCycles
+    init(coordinator: Coordinator?, viewModel: SignUpVM) {
+        self.coordinator = coordinator
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        configure()
+        popUpModal.isHidden = true
         configureUI()
     }
-    
+
     override func viewDidAppear(_ animated: Bool) {
         subscribeToShowKeyboardNotifications()
     }
-    
+
     override func viewDidDisappear(_ animated: Bool) {
         deregisterFromKeyboardNotifications()
     }
-    
+
     // MARK:- Configures
-    private func configure() {
-        view.backgroundColor = .white
-        //warningLabel.isHidden = true
-    }
-    
     private func configureUI() {
+        view.backgroundColor = .white
         view.addSubview(header)
         header.snp.makeConstraints { make in
             make.height.equalTo(50 * ratio)
             make.left.right.equalToSuperview()
             make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
         }
-        
+
         view.addSubview(titleLabel)
         titleLabel.text = "Sign Up"
         titleLabel.textColor = .grey8
@@ -70,7 +85,7 @@ class SignUpVC: UIViewController, UIGestureRecognizerDelegate, Coordinating {
             make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(50)
             make.left.equalToSuperview().offset(24)
         }
-        
+
         view.addSubview(usernameTextField)
         usernameTextField.snp.makeConstraints { make in
             make.height.equalTo(56 * ratio)
@@ -78,7 +93,7 @@ class SignUpVC: UIViewController, UIGestureRecognizerDelegate, Coordinating {
             make.left.equalToSuperview().offset(24)
             make.right.equalToSuperview().offset(-24)
         }
-        
+
         view.addSubview(userNameWarningLabel)
         userNameWarningLabel.textColor = .red
         userNameWarningLabel.font = .notoBold(size: 12 * ratio)
@@ -86,7 +101,7 @@ class SignUpVC: UIViewController, UIGestureRecognizerDelegate, Coordinating {
             make.top.equalTo(usernameTextField.snp.bottom).offset(-16)
             make.left.equalToSuperview().offset(24)
         }
-        
+
         view.addSubview(emailTextField)
         emailTextField.snp.makeConstraints { make in
             make.height.equalTo(56 * ratio)
@@ -94,7 +109,7 @@ class SignUpVC: UIViewController, UIGestureRecognizerDelegate, Coordinating {
             make.left.equalToSuperview().offset(24)
             make.right.equalToSuperview().offset(-24)
         }
-        
+
         view.addSubview(emailWarningLabel)
         emailWarningLabel.textColor = .red
         emailWarningLabel.font = .notoBold(size: 12 * ratio)
@@ -103,14 +118,30 @@ class SignUpVC: UIViewController, UIGestureRecognizerDelegate, Coordinating {
             make.left.equalToSuperview().offset(24)
         }
         
-        view.addSubview(passwordTextField)
-        passwordTextField.snp.makeConstraints { make in
+        view.addSubview(mobileTextField)
+        mobileTextField.snp.makeConstraints { make in
             make.height.equalTo(56 * ratio)
             make.top.equalTo(emailTextField.snp.bottom).offset(16)
             make.left.equalToSuperview().offset(24)
             make.right.equalToSuperview().offset(-24)
         }
-        
+
+        view.addSubview(mobileWarningLabel)
+        mobileWarningLabel.textColor = .red
+        mobileWarningLabel.font = .notoBold(size: 12 * ratio)
+        mobileWarningLabel.snp.makeConstraints { make in
+            make.top.equalTo(mobileTextField.snp.bottom).offset(-16)
+            make.left.equalToSuperview().offset(24)
+        }
+
+        view.addSubview(passwordTextField)
+        passwordTextField.snp.makeConstraints { make in
+            make.height.equalTo(56 * ratio)
+            make.top.equalTo(mobileTextField.snp.bottom).offset(16)
+            make.left.equalToSuperview().offset(24)
+            make.right.equalToSuperview().offset(-24)
+        }
+
         view.addSubview(passwordWarningLabel)
         passwordWarningLabel.textColor = .red
         passwordWarningLabel.font = .notoBold(size: 12 * ratio)
@@ -118,7 +149,7 @@ class SignUpVC: UIViewController, UIGestureRecognizerDelegate, Coordinating {
             make.top.equalTo(passwordTextField.snp.bottom).offset(-16)
             make.left.equalToSuperview().offset(24)
         }
-        
+
         view.addSubview(registerButton)
         buttonConstraint = registerButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: 0)
         buttonConstraint?.isActive = true
@@ -129,40 +160,56 @@ class SignUpVC: UIViewController, UIGestureRecognizerDelegate, Coordinating {
             make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).offset(16)
         }
         
+        view.addSubview(popUpModal)
+        popUpModal.snp.makeConstraints { make in
+            make.top.left.right.bottom.equalToSuperview()
+        }
+
     }
-    
-    func isValidEmail(_ email: String) -> Bool {
-        let pattern = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
-        let predicate = NSPredicate(format:"SELF MATCHES %@", pattern)
-        return predicate.evaluate(with: email)
-    }
-    
+
     // MARK:- Selectors
     @objc func registerUser() {
-        userNameWarningLabel.text = username.count > 0 ? "" : "Invaild User name"
-        emailWarningLabel.text = isValidEmail(email) ? "" : "Invalid Email"
-        passwordWarningLabel.text = (Int(password) ?? 0 >= 8) ? "" : "Invalid Password"
+        userNameWarningLabel.text = viewModel.isVaildUserName ? "" : "Invaild User name"
+        emailWarningLabel.text = viewModel.isValidEmail ? "" : "Invalid Email, baddly formatted"
+        mobileWarningLabel.text = viewModel.isValidMobile ? "" : "Invalid Password, should longer than 7"
+        passwordWarningLabel.text = viewModel.isValidPassword ? "" : "Invalid Password, should longer than 4"
         
-        API.shared.registerUesr(name: username, email: email, mobile: "1234449999", password: password) { [weak self] response in
-            guard let strongSelf = self,
-                  let response = response
-            else { return }
-            print("DEBUG:- \(response)")
-            
+        if viewModel.isValidForm {
+            API.shared.registerUesr(name: viewModel.fullName,
+                                    email: viewModel.email,
+                                    mobile: viewModel.mobile,
+                                    password: viewModel.password) { [weak self] response in
+                guard let strongSelf = self,
+                      let response = response
+                else { return }
+                strongSelf.togglePopUP()
+                print("DEBUG:- \(response)")
+            }
         }
     }
 
     @objc func textFieldDidChange(_ textField: UITextField) {
         guard let text = textField.text else { return }
         if textField == usernameTextField.viewWithTag(1) {
-            username = text
+            viewModel.fullName = text
             userNameWarningLabel.text = ""
         } else if textField == emailTextField.viewWithTag(1) {
-            email = text
+            viewModel.email = text
             emailWarningLabel.text = ""
         } else if textField == passwordTextField.viewWithTag(1) {
-            password = text
+            viewModel.password = text
             passwordWarningLabel.text = ""
+        } else if textField == mobileTextField.viewWithTag(1) {
+            viewModel.mobile = text
+            mobileWarningLabel.text = ""
+        }
+    }
+    
+    @objc func togglePopUP() {
+        if !popUpModal.isHidden {
+            coordinator?.popVC()
+        } else {
+            popUpModal.isHidden = false
         }
     }
 
@@ -180,18 +227,18 @@ class SignUpVC: UIViewController, UIGestureRecognizerDelegate, Coordinating {
             isPasswodHideen = true
         }
     }
-    
+
     // MARK:- Keyboard
     @objc func keyboardWillShow(_ notification: Notification) {
         let userInfo = notification.userInfo
         let keyboardSize = userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as! NSValue
-        buttonConstraint?.constant = (isBigPhone ? 50 + 8 : 16 + 16) - keyboardSize.cgRectValue.height - 48
+        buttonConstraint?.constant = (isBigPhone ? 58 : 32) - keyboardSize.cgRectValue.height - 48
         let animationDuration = userInfo?[UIResponder.keyboardAnimationDurationUserInfoKey] as! Double
         UIView.animate(withDuration: animationDuration) {
             self.view.layoutIfNeeded()
         }
     }
-       
+
     @objc func keyboardWillHide(_ notification: Notification) {
         buttonConstraint?.constant = 0
         let userInfo = notification.userInfo
@@ -200,7 +247,7 @@ class SignUpVC: UIViewController, UIGestureRecognizerDelegate, Coordinating {
             self.view.layoutIfNeeded()
         }
     }
-    
+
     func subscribeToShowKeyboardNotifications() {
         NotificationCenter.default.addObserver(self,
             selector: #selector(keyboardWillShow),
@@ -211,7 +258,7 @@ class SignUpVC: UIViewController, UIGestureRecognizerDelegate, Coordinating {
             name: UIResponder.keyboardWillHideNotification,
             object: nil)
     }
-    
+
     func deregisterFromKeyboardNotifications(){
         NotificationCenter.default.removeObserver(self,
             name: UIResponder.keyboardWillShowNotification,
@@ -220,5 +267,5 @@ class SignUpVC: UIViewController, UIGestureRecognizerDelegate, Coordinating {
             name: UIResponder.keyboardWillHideNotification,
             object: nil)
     }
-    
+
 }
