@@ -14,8 +14,8 @@ class MainTabBar: UITabBarController, UITabBarControllerDelegate, Coordinating {
     private let viewModel: MainTabBarVM
 
     // MARK: - Lifecycles
-    init(coordinator: Coordinator, viewModel: MainTabBarVM) {
-        self.coordinator = coordinator
+    init(viewModel: MainTabBarVM) {
+//        self.coordinator = coordinator
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
     }
