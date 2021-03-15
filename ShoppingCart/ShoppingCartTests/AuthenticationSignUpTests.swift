@@ -23,6 +23,17 @@ class AuthenticationSignUpTests: XCTestCase {
         XCTAssertNotNil(viewModel, "❌SignUpVM is emtpy")
     }
     
+    func testSignUpIsValidForm() throws {
+        guard let viewModel = viewModel else { return }
+        viewModel.email = "abc@gmail.com"
+        viewModel.fullName = "test"
+        viewModel.password = "0000"
+        viewModel.mobile = "12312341234"
+        XCTAssertTrue(viewModel.isValidForm, "❌SignUpVM isValidForm- did not valified validForm" )
+        viewModel.password = "0"
+        XCTAssertFalse(viewModel.isValidForm, "❌SignUpVM isValidForm- is not working" )
+    }
+    
     func testIsValidUserName() throws {
         guard let viewModel = viewModel else { return }
         let testName = "Test Name"
@@ -58,5 +69,32 @@ class AuthenticationSignUpTests: XCTestCase {
         XCTAssertFalse(viewModel.isValidMobile, "❌SignUpVM isValidMobile- \(testMobile2) is valid")
 
     }
+    
+    func testIsValidEmail() throws {
+        guard let viewModel = viewModel else { return }
+        let testEmail = "aa@gg.com"
+        let testEmails = ["aa", "aa.", "aa.gg", "aa@gg", "aa@gg."]
 
+        viewModel.email = testEmail
+        XCTAssertEqual(viewModel.email, testEmail, "❌SignUpVM isValidEmail- is not the same")
+        
+        XCTAssertTrue(viewModel.isValidEmail, "❌SignUpVM isValidEmail- \(testEmail) is not valid")
+        
+        testEmails.forEach {
+            viewModel.email = $0
+            XCTAssertFalse(viewModel.isValidEmail, "❌SignUpVM isValidEmail- \($0) is valid")
+        }
+    }
+    
+    func testShouldActiveButton() throws {
+        guard let viewModel = viewModel else { return }
+        viewModel.email = "abc@gmail.com"
+        viewModel.fullName = "test"
+        viewModel.password = "0000"
+        viewModel.mobile = "12312341234"
+        XCTAssertTrue(viewModel.shouldActiveButton, "❌SignUpVM shouldActiveButton- did not valified shouldActiveButton" )
+        viewModel.password = ""
+        XCTAssertFalse(viewModel.shouldActiveButton, "❌SignUpVM shouldActiveButton- is not working" )
+        
+    }
 }
