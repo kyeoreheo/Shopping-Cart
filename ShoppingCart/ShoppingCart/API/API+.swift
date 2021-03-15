@@ -30,4 +30,22 @@ extension API {
             }
         }
     }
+    
+    func getTopSellers(completion: @escaping(TopSellers?) -> Void) {
+        Alamofire.request(baseURL + topSeller, method: .get)
+        .responseData { response in
+            let decoder = JSONDecoder()
+            switch response.result {
+            case .success(let data):
+                do {
+                    let result = try decoder.decode(TopSellers.self, from: data)
+                    completion(result)
+                } catch {
+                    completion(nil)
+                }
+            case .failure(_):
+                completion(nil)
+            }
+        }
+    }
 }

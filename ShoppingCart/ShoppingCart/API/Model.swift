@@ -5,10 +5,26 @@
 //  Created by Kyo on 3/15/21.
 //
 
-struct A: Decodable {
-    
+struct TopSellers: Decodable {
+    let topSellers: [Seller]
+
+    enum CodingKeys: String, CodingKey {
+        case topSellers = "Top sellers"
+    }
 }
 
-struct B: Decodable {
+struct Seller: Decodable {
+    let id: String
+    let name: String
+    let comments: String
+    let rating: String
+    let logoURL: String
     
+    enum CodingKeys: String, CodingKey {
+        case id = "id"
+        case name = "sellername"
+        case comments = "sellerdeal"
+        case rating = "sellerrating"
+        case logoURL = "sellerlogo"
+    }
 }

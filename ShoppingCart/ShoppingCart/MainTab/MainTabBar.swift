@@ -33,6 +33,11 @@ class MainTabBar: UITabBarController, UITabBarControllerDelegate, Coordinating {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.selectedIndex = 0
+        
+        API.shared.getTopSellers { response in
+            print(response)
+            
+        }
     }
     
     // MARK: - Configures

@@ -13,14 +13,14 @@ class APITest: XCTestCase {
 
     override func setUpWithError() throws {
         api = API.shared
-        // Put setup code here. This method is called before the invocation of each test method in the class.
     }
 
     override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+        api = nil
     }
 
-    func testSignUP() throws {
+    func testSignUpSuccess() throws {
+        guard let api = api else { return }
         let body: [String : Any] = [
             "name": "testName",
             "email": "test@test.test",
@@ -28,21 +28,53 @@ class APITest: XCTestCase {
             "password": "0000",
         ]
         
-        api?.registerUesr(body: body) { response in
+        api.registerUesr(body: body) { response in
             XCTAssertEqual(response, "SUCCESS")
             XCTAssertNotNil(response, "❌ API register- is nil")
         }
     }
     
-    func testLogIn() throws {
+    func testSignUpFail() throws {
+        guard let api = api else { return }
+        let body: [String : Any] = [
+            "name": "testName"
+        ]
+        
+        api.registerUesr(body: body) { response in
+            XCTAssertEqual(response, "SUCCESS")
+            XCTAssertNotNil(response, "❌ API register- is nil")
+        }
+    }
+    
+    func testLogInSuccess() throws {
+        guard let api = api else { return }
+        let expectation = self.expectation(description: "Expects reponse is not nil")
+
         let body: [String : Any] = [
             "mobile": "12312341234",
             "password": "0000",
         ]
         
-        api?.logIn(body: body) { response in
+        api.logIn(body: body) { response in
             XCTAssertNotNil(response, "❌ API logIn- is nil")
+            expectation.fulfill()
         }
+        self.waitForExpectations(timeout: 20)
+    }
+    
+    func testLogInFail() throws {
+        guard let api = api else { return }
+        let expectation = self.expectation(description: "Expects reponse is not nil")
+
+        let body: [String : Any] = [
+            "mobile": "12312341234"
+        ]
+        
+        api.logIn(body: body) { response in
+            XCTAssertNotNil(response, "❌ API logIn- is not nil")
+            expectation.fulfill()
+        }
+        self.waitForExpectations(timeout: 20)
     }
 
 }

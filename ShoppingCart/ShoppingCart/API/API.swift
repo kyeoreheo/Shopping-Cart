@@ -18,7 +18,7 @@ class API {
     let forget = "forgot_pass_email.php?"
     let editProfile = "edit_profile.php?"
     let resetPassword = "shop_reset_pass.php?"
-    let topSeller = "shop_top_sellers.php?"
+    let topSeller = "shop_top_sellers.php?" //get
     let category = "cust_category.php?"
     let subCategory = "cust_sub_category.php?"
     let product = "product_details.php?"

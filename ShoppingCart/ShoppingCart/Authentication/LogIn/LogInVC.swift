@@ -63,7 +63,6 @@ class LogInVC: UIViewController, UIGestureRecognizerDelegate, Coordinating {
     // MARK:- Configures
     private func configure() {
         view.backgroundColor = .white
-        //        logInButton.isUserInteractionEnabled = true
         warningLabel.isHidden = true
     }
     
