@@ -163,6 +163,10 @@ class LogInVC: UIViewController, UIGestureRecognizerDelegate, Coordinating {
                 guard let strongSelf = self,
                       let response = response
                 else { return }
+                if response == "SUCCESS" {
+//                    strongSelf.coordinator?.fullScreen(MainTabBar(coordinator: coordinator, viewModel: MainTabBarVM()), currentView: <#T##UIViewController & Coordinating#>, animated: <#T##Bool#>)
+//                    //Log In here
+                }
                 print("DEBUG:- \(response)")
             }
         }

@@ -17,11 +17,11 @@ class MainCoordinator: Coordinator {
     
     func push(_ viewController: Coordinating & UIViewController) {
         var vc = viewController
-        //vc.coordinator = self
+        vc.coordinator = self
         navigationController?.pushViewController(vc, animated: true)
     }
     
-    func fullScreen(_ viewController: Coordinating & UIViewController, currentView: Coordinating & UIViewController, viewModel: ViewModel? = nil) {
+    func fullScreen(_ viewController: Coordinating & UIViewController, currentView: Coordinating & UIViewController, animated: Bool = false) {
         
         var vc = viewController
         vc.coordinator = self
@@ -32,7 +32,7 @@ class MainCoordinator: Coordinator {
             strongSelf.navigationController = nav
             nav.modalPresentationStyle = .fullScreen
             nav.navigationBar.isHidden = true
-            currentView.present(nav, animated: false)
+            currentView.present(nav, animated: animated)
         }
     }
     
