@@ -191,8 +191,9 @@ class SignUpVC: UIViewController, UIGestureRecognizerDelegate, Coordinating {
                 guard let strongSelf = self,
                       let response = response
                 else { return }
-                strongSelf.togglePopUP()
-                print("DEBUG:- \(response)")
+                if response == "SUCCESS" {
+                    strongSelf.togglePopUP()
+                }
             }
         }
     }
