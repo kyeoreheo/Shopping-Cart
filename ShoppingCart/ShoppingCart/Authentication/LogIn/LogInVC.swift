@@ -48,6 +48,10 @@ class LogInVC: UIViewController, UIGestureRecognizerDelegate, Coordinating {
         configureUI()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        coordinator?.fullScreen(MainTabBar(viewModel: MainTabBarVM()), currentView: self, animated: false)
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         subscribeToShowKeyboardNotifications()
     }
@@ -59,7 +63,6 @@ class LogInVC: UIViewController, UIGestureRecognizerDelegate, Coordinating {
     // MARK:- Configures
     private func configure() {
         view.backgroundColor = .white
-        //        logInButton.isUserInteractionEnabled = true
         warningLabel.isHidden = true
     }
     
@@ -156,10 +159,12 @@ class LogInVC: UIViewController, UIGestureRecognizerDelegate, Coordinating {
     
     @objc func logIn() {
         warningLabel.text = viewModel.isValidForm ? "" : "Invalid mobile or password"
-            
+        let body: [String : Any] = [
+            "mobile": viewModel.mobile,
+            "password": viewModel.password,
+        ]
         if viewModel.isValidForm {
-            API.shared.logIn(mobile: viewModel.mobile,
-                             password: viewModel.password) { [weak self] response in
+            API.shared.logIn(body: body) { [weak self] response in
                 guard let strongSelf = self,
                       let response = response
                 else { return }

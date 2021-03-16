@@ -180,16 +180,19 @@ class SignUpVC: UIViewController, UIGestureRecognizerDelegate, Coordinating {
     @objc func registerUser() {
         userNameWarningLabel.text = viewModel.isVaildUserName ? "" : "Invaild User name"
         emailWarningLabel.text = viewModel.isValidEmail ? "" : "Invalid Email, baddly formatted"
-        mobileWarningLabel.text = viewModel.isValidMobile ? "" : "Invalid Password, should longer than 7"
+        mobileWarningLabel.text = viewModel.isValidMobile ? "" : "Invalid Mobile, should longer than 10"
         passwordWarningLabel.text = viewModel.isValidPassword ? "" : "Invalid Password, should longer than 4"
         
         if viewModel.isValidForm {
-            API.shared.registerUesr(name: viewModel.fullName,
-                                    email: viewModel.email,
-                                    mobile: viewModel.mobile,
-                                    password: viewModel.password) { [weak self] response in
-                guard let strongSelf = self,
-                      let response = response
+            let body: [String : Any] = [
+                "name": viewModel.fullName,
+                "email": viewModel.email,
+                "mobile": viewModel.mobile,
+                "password": viewModel.password,
+            ]
+            
+            API.shared.registerUesr(body: body) { [weak self] response in
+                guard let strongSelf = self, let response = response
                 else { return }
                 if response == "SUCCESS" {
                     strongSelf.togglePopUP()

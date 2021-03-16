@@ -14,8 +14,8 @@ class MainTabBar: UITabBarController, UITabBarControllerDelegate, Coordinating {
     private let viewModel: MainTabBarVM
 
     // MARK: - Lifecycles
-    init(coordinator: Coordinator, viewModel: MainTabBarVM) {
-        self.coordinator = coordinator
+    init(viewModel: MainTabBarVM) {
+//        self.coordinator = coordinator
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
     }
@@ -33,6 +33,11 @@ class MainTabBar: UITabBarController, UITabBarControllerDelegate, Coordinating {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.selectedIndex = 0
+        
+        API.shared.getTopSellers { response in
+            print(response)
+            
+        }
     }
     
     // MARK: - Configures

@@ -7,14 +7,7 @@
 import Alamofire
 
 extension API {
-    func registerUesr(name: String, email: String, mobile: String,
-                      password: String, completion: @escaping(String?) -> Void) {
-        let body: [String : Any] = [
-            "name": name,
-            "email": email,
-            "mobile": mobile,
-            "password": password,
-        ]
+    func registerUesr(body: [String : Any], completion: @escaping(String?) -> Void) {
         Alamofire.request(baseURL + register, method: .get, parameters: body)
         .responseString { response in
             switch response.result {
@@ -23,15 +16,10 @@ extension API {
             case .failure(_):
                 completion(nil)
             }
-            
         }
     }
     
-    func logIn(mobile: String, password: String, completion: @escaping(String?) -> Void) {
-        let body: [String : Any] = [
-            "mobile": mobile,
-            "password": password,
-        ]
+    func logIn(body: [String : Any], completion: @escaping(String?) -> Void) {
         Alamofire.request(baseURL + logIn, method: .get, parameters: body)
         .responseString { response in
             switch response.result {
@@ -42,4 +30,43 @@ extension API {
             }
         }
     }
+    
+    func getTopSellers(completion: @escaping(TopSellers?) -> Void) {
+        Alamofire.request(baseURL + topSeller, method: .get)
+        .responseData { response in
+            let decoder = JSONDecoder()
+            switch response.result {
+            case .success(let data):
+                do {
+                    let result = try decoder.decode(TopSellers.self, from: data)
+                    completion(result)
+                } catch {
+                    completion(nil)
+                }
+            case .failure(_):
+                completion(nil)
+            }
+        }
+    }
+    
+    //NSString *strURL = [NSString stringWithFormat:@"%@api_key=%@&user_id=%@", kCATEGORYAPI, apiKey, userId];
+    
+    func getCategories(completion: @escaping(Category?) -> Void) {
+        Alamofire.request(baseURL + category, method: .get)
+        .responseData { response in
+            let decoder = JSONDecoder()
+            switch response.result {
+            case .success(let data):
+                do {
+                    let result = try decoder.decode(Category.self, from: data)
+                    completion(result)
+                } catch {
+                    completion(nil)
+                }
+            case .failure(_):
+                completion(nil)
+            }
+        }
+    }
+        
 }

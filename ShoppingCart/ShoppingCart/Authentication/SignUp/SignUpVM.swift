@@ -26,7 +26,7 @@ class SignUpVM: AuthenticationVM, ViewModel {
     }
     
     var isValidMobile: Bool {
-        return mobile.count >= 7
+        return mobile.count >= 10
     }
     
     var isValidEmail: Bool {

@@ -26,7 +26,6 @@ class AuthenticationLogInTests: XCTestCase {
         XCTAssertTrue(viewModel.isValidForm, "❌LogInVM isValidForm- did not valified validForm" )
         viewModel.password = ""
         XCTAssertFalse(viewModel.isValidForm, "❌LogInVM isValidForm- is not working" )
-
     }
     
     func testShouldActiveButton() throws {
@@ -36,7 +35,6 @@ class AuthenticationLogInTests: XCTestCase {
         XCTAssertTrue(viewModel.shouldActiveButton, "❌LogInVM shouldActiveButton- did not valified shouldActiveButton" )
         viewModel.password = ""
         XCTAssertFalse(viewModel.shouldActiveButton, "❌LogInVM shouldActiveButton- is not working" )
-        
     }
 
 }
