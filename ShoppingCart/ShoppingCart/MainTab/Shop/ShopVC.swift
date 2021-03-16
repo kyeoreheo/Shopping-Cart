@@ -10,15 +10,11 @@ import UIKit
 class ShopVC: UIViewController {
     // MARK:- View components
     private let titleLabel = UILabel()
+    private let topSellerPVC = TopSellerPVC()
 //    private let productFeedCVC = ProductFeedCVC()
 //    private lazy var notificationView = CustomView().notificationView(text: "Successfully purchased an item!")
 
     // MARK:- Properties
-//    var products = [API.ProductResponse]() {
-//        didSet {
-//            productFeedCVC.products = products
-//        }
-//    }
     
     // MARK:- Lifecycles
     override func viewDidLoad() {
@@ -40,6 +36,13 @@ class ShopVC: UIViewController {
         titleLabel.snp.makeConstraints { make in
             make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(4)
             make.left.equalToSuperview().offset(24)
+        }
+        
+        view.addSubview(topSellerPVC.view)
+        topSellerPVC.view.snp.makeConstraints { make in
+            make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
+            make.left.right.equalToSuperview()
+            make.height.equalTo(100 * ratio)
         }
         
 //        view.addSubview(productFeedCVC.view)

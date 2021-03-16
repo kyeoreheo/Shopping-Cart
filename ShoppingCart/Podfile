@@ -6,5 +6,6 @@ target 'ShoppingCart' do
   use_frameworks!
   pod 'SnapKit'
   pod 'Alamofire', '~> 4.9.1'
+  pod 'SDWebImage', '~> 5.0'
 
 end
