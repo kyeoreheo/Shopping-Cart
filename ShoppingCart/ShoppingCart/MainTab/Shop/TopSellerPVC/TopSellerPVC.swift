@@ -50,14 +50,9 @@ class TopSellerPVC: UIPageViewController {
             else { return }
             strongSelf.sellers = topSellers
         }
-//        API.fetchHomeBanners { [weak self] response in
-//             guard let strongSelf = self else { return }
-//             strongSelf.banner = response
-//         }
     }
     
     // MARK:- Helpers
-    //kyo I want to see what happend if I trigger this when the homeview is loaded
     public func generatePages() {
         pages = sellers.compactMap{ TopSellerItem(viewModel: TopSellerVM(seller: $0))}
         if pages.count > 0 {

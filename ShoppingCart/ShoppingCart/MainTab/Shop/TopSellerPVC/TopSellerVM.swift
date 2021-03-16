@@ -13,6 +13,7 @@ class TopSellerVM {
     let imageURLString: String
     let coments: [String]
     let rating: Float
+    
     init(seller: Seller) {
         self.id = Int64(seller.id) ?? 0
         self.imageURLString = seller.logoURL

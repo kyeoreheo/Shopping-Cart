@@ -21,11 +21,12 @@ class CustomView {
         button.tintColor = .black
         button.addGestureRecognizer(UITapGestureRecognizer(target: target, action: action))
         button.isEnabled = true
+        button.contentMode = .left
         button.imageView?.contentMode = .scaleAspectFill
         button.snp.makeConstraints { make in
             make.width.height.equalTo(30 * ratio)
             make.centerY.equalToSuperview()
-            make.left.equalToSuperview().offset(24)
+            make.left.equalToSuperview().offset(18)
         }
 
         return view
@@ -267,7 +268,7 @@ class CustomView {
         }
 
         frameView.addSubview(button)
-        button.backgroundColor = .orange
+        button.backgroundColor = .white
         button.setTitle(buttonText, for: .normal)
         button.setTitleColor(.white, for: .normal)
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 18)

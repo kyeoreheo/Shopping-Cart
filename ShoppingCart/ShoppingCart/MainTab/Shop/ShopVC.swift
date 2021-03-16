@@ -46,9 +46,9 @@ class ShopVC: UIViewController {
         }
         
         view.addSubview(categoryCVC.view)
-//        categoryCVC.delegate = self
+        categoryCVC.delegate = self
         categoryCVC.view.snp.makeConstraints { make in
-            make.top.equalTo(topSellerPVC.view.snp.bottom).offset(8)
+            make.top.equalTo(topSellerPVC.view.snp.bottom).offset(12)
             make.left.right.equalToSuperview()
             make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
         }
@@ -57,4 +57,13 @@ class ShopVC: UIViewController {
 }
 
 // MARK:- Extension
-
+extension ShopVC: CategoryCVCDelegate {
+    func cellTapped(index: Int, cId: String) {
+        print("DEBUG:- cell Tapped \(index)")
+        API.shared.getSubCategory(withID: cId) { [weak self] response in
+            
+            
+        }
+    }
+    
+}

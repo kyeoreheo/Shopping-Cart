@@ -24,6 +24,8 @@
 		3158ECEE25FADF0B0058B98C /* NotoSansCJKkr-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3158ECE025FADF0B0058B98C /* NotoSansCJKkr-Bold.otf */; };
 		3158ED1E25FB089B0058B98C /* LogInVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3158ED1D25FB089B0058B98C /* LogInVC.swift */; };
 		3158ED2325FB09230058B98C /* UILabel+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3158ED2225FB09230058B98C /* UILabel+.swift */; };
+		315983E42601058D003AE228 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315983E32601058D003AE228 /* User.swift */; };
+		315983EA26011BA9003AE228 /* Preferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315983E926011BA9003AE228 /* Preferences.swift */; };
 		31712FE525FAAE9900BFA25E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31712FE425FAAE9900BFA25E /* AppDelegate.swift */; };
 		31712FE725FAAE9900BFA25E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31712FE625FAAE9900BFA25E /* SceneDelegate.swift */; };
 		31712FE925FAAE9900BFA25E /* SplashVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31712FE825FAAE9900BFA25E /* SplashVC.swift */; };
@@ -94,6 +96,8 @@
 		3158ECE025FADF0B0058B98C /* NotoSansCJKkr-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansCJKkr-Bold.otf"; sourceTree = "<group>"; };
 		3158ED1D25FB089B0058B98C /* LogInVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInVC.swift; sourceTree = "<group>"; };
 		3158ED2225FB09230058B98C /* UILabel+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+.swift"; sourceTree = "<group>"; };
+		315983E32601058D003AE228 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		315983E926011BA9003AE228 /* Preferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Preferences.swift; sourceTree = "<group>"; };
 		31712FE125FAAE9900BFA25E /* ShoppingCart.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ShoppingCart.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		31712FE425FAAE9900BFA25E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		31712FE625FAAE9900BFA25E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -206,6 +210,15 @@
 			path = Font;
 			sourceTree = "<group>";
 		};
+		315983E826011B90003AE228 /* BuildManager */ = {
+			isa = PBXGroup;
+			children = (
+				315983E32601058D003AE228 /* User.swift */,
+				315983E926011BA9003AE228 /* Preferences.swift */,
+			);
+			path = BuildManager;
+			sourceTree = "<group>";
+		};
 		31712FD825FAAE9900BFA25E = {
 			isa = PBXGroup;
 			children = (
@@ -264,6 +277,7 @@
 		3171301A25FAAEA000BFA25E /* Application */ = {
 			isa = PBXGroup;
 			children = (
+				315983E826011B90003AE228 /* BuildManager */,
 				3158ECD225FADF0B0058B98C /* Font */,
 				31712FE425FAAE9900BFA25E /* AppDelegate.swift */,
 				31712FE625FAAE9900BFA25E /* SceneDelegate.swift */,
@@ -598,7 +612,9 @@
 				319E58C925FFF06D00D68A01 /* CategoryCell.swift in Sources */,
 				31712FE725FAAE9900BFA25E /* SceneDelegate.swift in Sources */,
 				319644CE25FD5FD6006F7E83 /* API+.swift in Sources */,
+				315983E42601058D003AE228 /* User.swift in Sources */,
 				3158ECA325FAD8460058B98C /* Global.swift in Sources */,
+				315983EA26011BA9003AE228 /* Preferences.swift in Sources */,
 				319E58AB25FFBF1300D68A01 /* Model.swift in Sources */,
 				3158ED1E25FB089B0058B98C /* LogInVC.swift in Sources */,
 				31EFA06D25FC1637007AD0B0 /* SignUpVC.swift in Sources */,
