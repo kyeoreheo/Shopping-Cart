@@ -20,7 +20,7 @@ class TopSellerPVC: UIPageViewController {
     // MARK:- Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .orange
+        view.backgroundColor = .white
         self.delegate = self
         self.dataSource = self
         fetchHomeBanners()

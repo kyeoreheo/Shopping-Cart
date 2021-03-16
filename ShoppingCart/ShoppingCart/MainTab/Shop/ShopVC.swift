@@ -11,7 +11,7 @@ class ShopVC: UIViewController {
     // MARK:- View components
     private let titleLabel = UILabel()
     private let topSellerPVC = TopSellerPVC()
-//    private let productFeedCVC = ProductFeedCVC()
+    private let categoryCVC = CategoryCVC()
 //    private lazy var notificationView = CustomView().notificationView(text: "Successfully purchased an item!")
 
     // MARK:- Properties
@@ -40,18 +40,18 @@ class ShopVC: UIViewController {
         
         view.addSubview(topSellerPVC.view)
         topSellerPVC.view.snp.makeConstraints { make in
-            make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
+            make.top.equalTo(titleLabel.snp.bottom).offset(8)
             make.left.right.equalToSuperview()
             make.height.equalTo(100 * ratio)
         }
         
-//        view.addSubview(productFeedCVC.view)
-//        productFeedCVC.delegate = self
-//        productFeedCVC.view.snp.makeConstraints { make in
-//            make.top.equalTo(titleLabel.snp.bottom).offset(8)
-//            make.left.right.equalToSuperview()
-//            make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
-//        }
+        view.addSubview(categoryCVC.view)
+//        categoryCVC.delegate = self
+        categoryCVC.view.snp.makeConstraints { make in
+            make.top.equalTo(topSellerPVC.view.snp.bottom).offset(8)
+            make.left.right.equalToSuperview()
+            make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
+        }
     }
             
 }

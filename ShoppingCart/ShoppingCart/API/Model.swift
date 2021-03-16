@@ -28,3 +28,7 @@ struct Seller: Decodable {
         case logoURL = "sellerlogo"
     }
 }
+
+struct Category: Decodable {
+    
+}
