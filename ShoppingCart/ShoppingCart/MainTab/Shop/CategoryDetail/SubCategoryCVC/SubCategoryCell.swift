@@ -1,12 +1,13 @@
 //
-//  ProductCell.swift
+//  SubCategoryCell.swift
 //  ShoppingCart
 //
-//  Created by Kyo on 3/15/21.
+//  Created by Kyo on 3/16/21.
 //
+
 import UIKit
 
-class CategoryCell: UICollectionViewCell {
+class SubCategoryCell: UICollectionViewCell {
     // MARK:- View components
     public let categoryLabel = UILabel()
     public let imageView = UIImageView()

@@ -1,21 +1,19 @@
 //
-//  ProductFeedCVC.swift
+//  SubCategoryCVC.swift
 //  ShoppingCart
 //
-//  Created by Kyo on 3/15/21.
+//  Created by Kyo on 3/16/21.
 //
-
 import UIKit
-import SDWebImage
 
-protocol CategoryCVCDelegate: class {
+protocol SubCategoryCVCDelegate: class {
     func cellTapped(index: Int, cId: String)
 }
 
-class CategoryCVC: UICollectionViewController {
+class SubCategoryCVC: UICollectionViewController {
     // MARK:- Properties
-    weak var delegate: CategoryCVCDelegate?
-    private let reuseIdentifier = "categoryCell"
+    weak var delegate: SubCategoryCVCDelegate?
+    private let reuseIdentifier = "subCategoryCell"
     private var categories = [Category]() {
         didSet{ collectionView.reloadData() }
     }
@@ -60,7 +58,7 @@ class CategoryCVC: UICollectionViewController {
 }
 
 // MARK:- Extentions
-extension CategoryCVC: UICollectionViewDelegateFlowLayout {
+extension SubCategoryCVC: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: view.frame.width, height: view.frame.width / 1.5)
     }
@@ -74,7 +72,7 @@ extension CategoryCVC: UICollectionViewDelegateFlowLayout {
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as? CategoryCell
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as? SubCategoryCell
         else { return UICollectionViewCell()}
         let viewModel = CategoryCellVM(model: categories[indexPath.row])
         cell.viewModel = viewModel

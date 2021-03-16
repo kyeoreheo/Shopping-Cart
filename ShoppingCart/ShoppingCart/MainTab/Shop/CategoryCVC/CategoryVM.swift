@@ -8,6 +8,15 @@
 import UIKit
 
 class CategoryCellVM {
+    let title: String
+    let imageStringURL: String
+    let id: String
+    
+    init(model: Category) {
+        self.id = model.cid
+        self.title = model.cname
+        self.imageStringURL = model.cimagerl
+    }
     
 }
 

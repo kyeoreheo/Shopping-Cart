@@ -7,28 +7,25 @@
 
 import UIKit
 
-class ShopVC: UIViewController {
+class ShopVC: UIViewController, Coordinating {
+    var coordinator: Coordinator?
+    
     // MARK:- View components
     private let titleLabel = UILabel()
     private let topSellerPVC = TopSellerPVC()
     private let categoryCVC = CategoryCVC()
-//    private lazy var notificationView = CustomView().notificationView(text: "Successfully purchased an item!")
 
     // MARK:- Properties
     
     // MARK:- Lifecycles
     override func viewDidLoad() {
-        configureView()
+//        configureView()
         configureUI()
     }
     
     // MARK:- Configures
-    private func configureView() {
-        view.backgroundColor = .white
-//        viewModel.getProducts()
-    }
-    
     private func configureUI() {
+        view.backgroundColor = .white
         view.addSubview(titleLabel)
         titleLabel.text = "Trand Items"
         titleLabel.textColor = .grey8
@@ -61,8 +58,10 @@ extension ShopVC: CategoryCVCDelegate {
     func cellTapped(index: Int, cId: String) {
         print("DEBUG:- cell Tapped \(index)")
         API.shared.getSubCategory(withID: cId) { [weak self] response in
-            
-            
+            guard let strongSelf = self, let response = response
+            else { return }
+            strongSelf.navigationController?.pushViewController(CategoryDetailVC(), animated: true)
+//            strongSelf.coor
         }
     }
     
