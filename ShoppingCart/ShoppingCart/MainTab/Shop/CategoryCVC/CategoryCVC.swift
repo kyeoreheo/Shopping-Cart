@@ -15,10 +15,10 @@ protocol CategoryCVCDelegate: class {
 class CategoryCVC: UICollectionViewController {
     // MARK:- Properties
     weak var delegate: CategoryCVCDelegate?
-    private let reuseIdentifier = "categoryCell"
-    private var categories = [Category]() {
+    var categories = [Category]() {
         didSet{ collectionView.reloadData() }
     }
+    private let reuseIdentifier = "categoryCell"
 
     // MARK:- Lifecycles
     override init(collectionViewLayout layout: UICollectionViewLayout = UICollectionViewFlowLayout()) {
@@ -35,7 +35,6 @@ class CategoryCVC: UICollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configure()
-        fetCategories()
     }
     
     // MARK:- Configures
@@ -46,16 +45,6 @@ class CategoryCVC: UICollectionViewController {
         collectionView.showsVerticalScrollIndicator = false
         collectionView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 20, right: 0)
         collectionView.register(CategoryCell.self, forCellWithReuseIdentifier: reuseIdentifier)
-    }
-    
-    // MARK:- Helpers
-    private func fetCategories() {
-        API.shared.getCategories { [weak self] response in
-            guard let strongSelf = self,
-                  let response = response
-            else { return }
-            strongSelf.categories = response.category
-        }
     }
 }
 

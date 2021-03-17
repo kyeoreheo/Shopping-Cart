@@ -49,13 +49,10 @@ class APITest: XCTestCase {
     func testLogInSuccess() throws {
         guard let api = api else { return }
         let expectation = self.expectation(description: "Expects reponse is not nil")
-
-        let body: [String : Any] = [
-            "mobile": "12312341234",
-            "password": "0000",
-        ]
+        let mobile = "12312341234"
+        let password = "0000"
         
-        api.logIn(body: body) { response in
+        api.logIn(mobile: mobile, password: password) { response in
             XCTAssertNotNil(response, "❌ API logIn- is nil")
             expectation.fulfill()
         }
@@ -66,11 +63,10 @@ class APITest: XCTestCase {
         guard let api = api else { return }
         let expectation = self.expectation(description: "Expects reponse is not nil")
 
-        let body: [String : Any] = [
-            "mobile": "12312341234"
-        ]
+        let mobile = "12312341234"
+        let password = ""
         
-        api.logIn(body: body) { response in
+        api.logIn(mobile: mobile, password: password) { response in
             XCTAssertNotNil(response, "❌ API logIn- is not nil")
             expectation.fulfill()
         }

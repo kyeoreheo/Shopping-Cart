@@ -16,11 +16,13 @@ class ShopVC: UIViewController, Coordinating {
     private let categoryCVC = CategoryCVC()
 
     // MARK:- Properties
+    private var categories = [Category]()
     
     // MARK:- Lifecycles
     override func viewDidLoad() {
 //        configureView()
         configureUI()
+        fetCategories()
     }
     
     // MARK:- Configures
@@ -50,6 +52,16 @@ class ShopVC: UIViewController, Coordinating {
             make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
         }
     }
+    
+    private func fetCategories() {
+        API.shared.getCategories { [weak self] response in
+            guard let strongSelf = self,
+                  let response = response
+            else { return }
+            strongSelf.categories = response.category
+            strongSelf.categoryCVC.categories = response.category
+        }
+    }
             
 }
 
@@ -57,12 +69,13 @@ class ShopVC: UIViewController, Coordinating {
 extension ShopVC: CategoryCVCDelegate {
     func cellTapped(index: Int, cId: String) {
         print("DEBUG:- cell Tapped \(index)")
-        API.shared.getSubCategory(withID: cId) { [weak self] response in
-            guard let strongSelf = self, let response = response
-            else { return }
-            strongSelf.navigationController?.pushViewController(CategoryDetailVC(), animated: true)
-//            strongSelf.coor
-        }
+        navigationController?.pushViewController(CategoryDetailVC(viewModel: CategoryDetailVM(model: categories[index])), animated: true)
+//        API.shared.getSubCategory(withID: cId) { [weak self] response in
+//            guard let strongSelf = self, let response = response
+//            else { return }
+//            strongSelf.
+////            strongSelf.coor
+//        }
     }
     
 }

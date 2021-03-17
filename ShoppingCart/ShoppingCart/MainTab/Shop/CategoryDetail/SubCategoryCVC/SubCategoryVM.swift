@@ -6,7 +6,14 @@
 //
 
 class SubCategoryVM {
+    let id: String
+    let title: String
+    let discription: String
+    let imageStringURL: String
     init(model: Subcategory) {
-        
+        self.id = model.scid
+        self.title = model.scname
+        self.discription = model.scdiscription
+        self.imageStringURL = model.scimageurl
     }
 }

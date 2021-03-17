@@ -65,3 +65,17 @@ struct Subcategory: Codable {
     let scdiscription: String
     let scimageurl: String
 }
+
+struct ProductsResponse: Codable {
+    let products: [Product]
+}
+
+// MARK: - Product
+struct Product: Codable {
+    let id: String
+    let pname: String
+    let quantity: String
+    let prize: String
+    let discription: String
+    let image: String
+}

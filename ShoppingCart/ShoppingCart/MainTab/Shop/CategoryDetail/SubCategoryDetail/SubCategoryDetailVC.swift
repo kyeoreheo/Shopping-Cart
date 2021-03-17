@@ -1,13 +1,13 @@
 //
-//  CategoryDetailVC.swift
+//  SubCategoryDetailVC.swift
 //  ShoppingCart
 //
-//  Created by Kyo on 3/16/21.
+//  Created by Kyo on 3/17/21.
 //
 
 import UIKit
 
-class CategoryDetailVC: UIViewController {
+class SubCategoryDetailVC: UIViewController {
     // MARK:- View components
     private let titleLabel = UILabel()
     private let discriptionLabel = UILabel()
@@ -16,13 +16,15 @@ class CategoryDetailVC: UIViewController {
     private let subCategoryCVC = SubCategoryCVC()
 
     // MARK:- Properties
-    private let viewModel: CategoryDetailVM
+    private let cID: String
+    private let viewModel: SubCategoryDetailVM
     private var subCategories = [Subcategory]() {
         didSet { subCategoryCVC.subCategories = subCategories }
     }
     
     // MARK:- Lifecycles
-    init(viewModel: CategoryDetailVM) {
+    init(cID: String, viewModel: SubCategoryDetailVM) {
+        self.cID = cID
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
     }
@@ -57,7 +59,7 @@ class CategoryDetailVC: UIViewController {
         }
         
         view.addSubview(discriptionLabel)
-        discriptionLabel.text = viewModel.discription
+        discriptionLabel.text = viewModel.description
         discriptionLabel.textColor = .grey8
         discriptionLabel.numberOfLines = 0
         discriptionLabel.textAlignment = .center
@@ -78,20 +80,26 @@ class CategoryDetailVC: UIViewController {
     }
     
     private func fetchSubCategory() {
-        API.shared.getSubCategory(withID: viewModel.cID) { [weak self] response in
+        API.shared.getProducts(cID: cID, scID: viewModel.id) { [weak self] response in
             guard let strongSelf = self, let response = response
             else { return }
-            strongSelf.subCategories = response.subcategory
-            print("DEBUG:- \(response.subcategory)")
+            
         }
+        
+//        API.shared.getSubCategory(withID: viewModel.) { [weak self] response in
+//            guard let strongSelf = self, let response = response
+//            else { return }
+//            strongSelf.subCategories = response.subcategory
+//            print("DEBUG:- \(response.subcategory)")
+//        }
     }
 }
 
 // MARK:- Extension
-extension CategoryDetailVC: SubCategoryCVCDelegate {
+extension SubCategoryDetailVC: SubCategoryCVCDelegate {
     func cellTapped(index: Int) {
-        navigationController?.pushViewController(SubCategoryDetailVC(cID: viewModel.cID, viewModel: SubCategoryDetailVM(model: subCategories[index])), animated: true)
         print("DEBUG:- cell Tapped \(index)")
     }
     
 }
+

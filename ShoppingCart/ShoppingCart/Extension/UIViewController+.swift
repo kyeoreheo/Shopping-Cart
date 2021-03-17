@@ -10,7 +10,10 @@ import UIKit
 extension UIViewController {
     @objc func popVC() {
         guard let vc = self as? UIViewController & Coordinating
-        else { return }
+        else {
+            navigationController?.popViewController(animated: true)
+            return
+        }
         vc.coordinator?.popVC()
     }
 

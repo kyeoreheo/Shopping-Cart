@@ -76,8 +76,6 @@ extension API {
         }
     }
     
-    //@"http://rjtmobile.com/ansari/shopingcart/ios-ssl/cust_sub_category.php?"
-    //http://rjtmobile.com/ansari/shopingcart/ios-ssl/cust_sub_category.php?Id=107&api_key=598ed427bd43dcb1198802d21314e762&user_id=2075
     func getSubCategory(withID id: String, completion: @escaping(SubCategryResponse?) -> Void) {
         let stringURL: String = baseURL2 + subCategory + "Id=\(id)&api_key=\(User.shared.model.appapikey)&user_id=\(User.shared.model.id)"
 
@@ -97,5 +95,25 @@ extension API {
             }
         }
     }
-        
+    
+    //http://rjtmobile.com/ansari/shopingcart/ios-ssl/product_details.php?cid=107&scid=205&api_key=fd942dc6ce641dbbe9db92639475bfdc&user_id=2075
+    func getProducts(cID: String, scID: String, completion: @escaping(ProductsResponse?) -> Void) {
+        let stringURL: String = baseURL2 + product + "cid=\(cID)&scid=\(scID)&api_key=\(User.shared.model.appapikey)&user_id=\(User.shared.model.id)"
+
+        Alamofire.request(stringURL, method: .get)
+        .responseData { response in
+            let decoder = JSONDecoder()
+            switch response.result {
+            case .success(let data):
+                do {
+                    let result = try decoder.decode(ProductsResponse.self, from: data)
+                    completion(result)
+                } catch {
+                    completion(nil)
+                }
+            case .failure(_):
+                completion(nil)
+            }
+        }
+    }
 }
