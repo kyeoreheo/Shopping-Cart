@@ -1,24 +1,23 @@
 //
-//  ProductFeedCVC.swift
+//  ProductsCVC.swift
 //  ShoppingCart
 //
-//  Created by Kyo on 3/15/21.
+//  Created by Kyo on 3/17/21.
 //
 
 import UIKit
-import SDWebImage
 
-protocol CategoryCVCDelegate: class {
-    func cellTapped(index: Int, cId: String)
+protocol ProductCVCDelegate: class {
+    func cellTapped(index: Int)
 }
 
-class CategoryCVC: UICollectionViewController {
+class ProductCVC: UICollectionViewController {
     // MARK:- Properties
-    weak var delegate: CategoryCVCDelegate?
-    var categories = [Category]() {
+    weak var delegate: ProductCVCDelegate?
+    private let reuseIdentifier = "productCell"
+    public var products = [Product]() {
         didSet{ collectionView.reloadData() }
     }
-    private let reuseIdentifier = "categoryCell"
 
     // MARK:- Lifecycles
     override init(collectionViewLayout layout: UICollectionViewLayout = UICollectionViewFlowLayout()) {
@@ -43,29 +42,30 @@ class CategoryCVC: UICollectionViewController {
         collectionView.backgroundColor = .white
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.showsVerticalScrollIndicator = false
-        collectionView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 20, right: 0)
-        collectionView.register(CategoryCell.self, forCellWithReuseIdentifier: reuseIdentifier)
+        collectionView.contentInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
+        collectionView.register(ProductCell.self, forCellWithReuseIdentifier: reuseIdentifier)
     }
+
 }
 
 // MARK:- Extentions
-extension CategoryCVC: UICollectionViewDelegateFlowLayout {
+extension ProductCVC: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: view.frame.width, height: view.frame.width / 1.5)
+        return CGSize(width: view.frame.width, height: view.frame.width / 4)
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return categories.count
+        return products.count
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        delegate?.cellTapped(index: indexPath.row, cId: categories[indexPath.row].cid)
+        delegate?.cellTapped(index: indexPath.row)
     }
-    
+
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as? CategoryCell
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as? ProductCell
         else { return UICollectionViewCell()}
-        let viewModel = CategoryCellVM(model: categories[indexPath.row])
+        let viewModel = ProductVM(model: products[indexPath.row])
         cell.viewModel = viewModel
 
         return cell

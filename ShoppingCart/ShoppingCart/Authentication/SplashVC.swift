@@ -82,12 +82,10 @@ class SplashVC: UIViewController, Coordinating {
     // MARK:- Helpers
     @objc func logInTapped() {
         coordinator?.push(LogInVC(coordinator: coordinator, viewModel: LogInVM()))
-        print("DEBUG:- logInTapped")
     }
     
     @objc func signUpTapped() {
         coordinator?.push(SignUpVC(coordinator: coordinator, viewModel: SignUpVM()))
-        print("DEBUG:- signUp Tapped")
     }
 }
 

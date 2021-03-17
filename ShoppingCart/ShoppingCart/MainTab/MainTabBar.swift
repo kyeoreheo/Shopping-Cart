@@ -35,7 +35,7 @@ class MainTabBar: UITabBarController, UITabBarControllerDelegate, Coordinating {
         self.selectedIndex = 0
         
         API.shared.getTopSellers { response in
-            print(response)
+//            print(response)
             
         }
     }

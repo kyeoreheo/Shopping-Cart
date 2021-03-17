@@ -5,4 +5,8 @@
 //  Created by Kyo on 3/15/21.
 //
 
-import Foundation
+class ShopVM {
+    var title: String {
+        return "Tranding Items"
+    }
+}

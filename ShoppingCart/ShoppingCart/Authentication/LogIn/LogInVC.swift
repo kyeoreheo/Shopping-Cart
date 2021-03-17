@@ -12,7 +12,7 @@ class LogInVC: UIViewController, UIGestureRecognizerDelegate, Coordinating {
     private lazy var header = CustomView.shared.header(headerType: .back,
                      target: self, action: #selector(popVC))
     private lazy var mobileTextField = CustomView.shared.textField(
-                     placeHolder: "Email", target: self,
+                     placeHolder: "Mobile", target: self,
                      action: #selector(textFieldDidChange), type: .email)
     private lazy var passwordTextField = CustomView.shared.textField(
                      placeHolder: "Password", target: self,
@@ -49,7 +49,7 @@ class LogInVC: UIViewController, UIGestureRecognizerDelegate, Coordinating {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        coordinator?.fullScreen(MainTabBar(viewModel: MainTabBarVM()), currentView: self, animated: false)
+//        coordinator?.fullScreen(MainTabBar(viewModel: MainTabBarVM()), currentView: self, animated: false)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -159,20 +159,14 @@ class LogInVC: UIViewController, UIGestureRecognizerDelegate, Coordinating {
     
     @objc func logIn() {
         warningLabel.text = viewModel.isValidForm ? "" : "Invalid mobile or password"
-        let body: [String : Any] = [
-            "mobile": viewModel.mobile,
-            "password": viewModel.password,
-        ]
+
         if viewModel.isValidForm {
-            API.shared.logIn(body: body) { [weak self] response in
+            API.shared.logIn(mobile: viewModel.mobile, password: viewModel.password) { [weak self] response in
                 guard let strongSelf = self,
-                      let response = response
+                      let response = response?[0]
                 else { return }
-                if response == "SUCCESS" {
-//                    strongSelf.coordinator?.fullScreen(MainTabBar(coordinator: coordinator, viewModel: MainTabBarVM()), currentView: <#T##UIViewController & Coordinating#>, animated: <#T##Bool#>)
-//                    //Log In here
-                }
-                print("DEBUG:- \(response)")
+                strongSelf.coordinator?.fullScreen(MainTabBar(viewModel: MainTabBarVM()), currentView: strongSelf, animated: false)
+                User.shared.setUser(model: response)
             }
         }
     }

@@ -7,30 +7,29 @@
 
 import UIKit
 
-class ShopVC: UIViewController {
+class ShopVC: UIViewController, Coordinating {
+    var coordinator: Coordinator?
+    
     // MARK:- View components
     private let titleLabel = UILabel()
     private let topSellerPVC = TopSellerPVC()
     private let categoryCVC = CategoryCVC()
-//    private lazy var notificationView = CustomView().notificationView(text: "Successfully purchased an item!")
 
     // MARK:- Properties
+    private var categories = [Category]()
     
     // MARK:- Lifecycles
     override func viewDidLoad() {
-        configureView()
+//        configureView()
         configureUI()
+        fetCategories()
     }
     
     // MARK:- Configures
-    private func configureView() {
-        view.backgroundColor = .white
-//        viewModel.getProducts()
-    }
-    
     private func configureUI() {
+        view.backgroundColor = .white
         view.addSubview(titleLabel)
-        titleLabel.text = "Trand Items"
+        titleLabel.text = "Tranding Items"
         titleLabel.textColor = .grey8
         titleLabel.font = .notoBold(size: 24 * ratio)
         titleLabel.snp.makeConstraints { make in
@@ -46,15 +45,37 @@ class ShopVC: UIViewController {
         }
         
         view.addSubview(categoryCVC.view)
-//        categoryCVC.delegate = self
+        categoryCVC.delegate = self
         categoryCVC.view.snp.makeConstraints { make in
-            make.top.equalTo(topSellerPVC.view.snp.bottom).offset(8)
+            make.top.equalTo(topSellerPVC.view.snp.bottom).offset(12)
             make.left.right.equalToSuperview()
             make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
+        }
+    }
+    
+    private func fetCategories() {
+        API.shared.getCategories { [weak self] response in
+            guard let strongSelf = self,
+                  let response = response
+            else { return }
+            strongSelf.categories = response.category
+            strongSelf.categoryCVC.categories = response.category
         }
     }
             
 }
 
 // MARK:- Extension
-
+extension ShopVC: CategoryCVCDelegate {
+    func cellTapped(index: Int, cId: String) {
+        print("DEBUG:- cell Tapped \(index)")
+        navigationController?.pushViewController(CategoryDetailVC(viewModel: CategoryDetailVM(model: categories[index])), animated: true)
+//        API.shared.getSubCategory(withID: cId) { [weak self] response in
+//            guard let strongSelf = self, let response = response
+//            else { return }
+//            strongSelf.
+////            strongSelf.coor
+//        }
+    }
+    
+}

@@ -1,18 +1,19 @@
 //
-//  ProductCell.swift
+//  SubCategoryCell.swift
 //  ShoppingCart
 //
-//  Created by Kyo on 3/15/21.
+//  Created by Kyo on 3/16/21.
 //
+
 import UIKit
 
-class CategoryCell: UICollectionViewCell {
+class SubCategoryCell: UICollectionViewCell {
     // MARK:- View components
-    public let categoryLabel = UILabel()
+    public let subCategoryLabel = UILabel()
     public let imageView = UIImageView()
     
     // MARK:- Properties
-    public var viewModel: CategoryCellVM? {
+    public var viewModel: SubCategoryVM? {
         didSet { configureView() }
     }
 
@@ -30,21 +31,21 @@ class CategoryCell: UICollectionViewCell {
     // MARK:- Configures
     private func configureView() {
         guard let viewModel = viewModel else { return }
-        backgroundColor = .white
-        categoryLabel.text = viewModel.title
+//        backgroundColor = .white
+        subCategoryLabel.text = viewModel.title
         imageView.sd_setImage(with: URL(string: viewModel.imageStringURL), placeholderImage: UIImage(named: "not-found"))
     }
     
     private func configureUI() {
-        addSubview(categoryLabel)
-        categoryLabel.text = "CategoryHere"
-        categoryLabel.textColor = .grey8
-        categoryLabel.textAlignment = .center
-        categoryLabel.font = .boldSystemFont(ofSize: 25 * ratio)
-        categoryLabel.snp.makeConstraints { make in
+        addSubview(subCategoryLabel)
+        subCategoryLabel.text = "CategoryHere"
+        subCategoryLabel.textColor = .grey8
+        subCategoryLabel.textAlignment = .center
+        subCategoryLabel.font = .boldSystemFont(ofSize: 18 * ratio)
+        subCategoryLabel.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(4)
             make.left.right.equalToSuperview()
-            make.height.equalTo(30)
+            make.height.equalTo(15)
         }
         
         addSubview(imageView)
@@ -52,14 +53,14 @@ class CategoryCell: UICollectionViewCell {
         imageView.contentMode = .scaleToFill
         imageView.image = UIImage(named: "not_found")
         imageView.snp.makeConstraints { make in
-            make.top.equalTo(categoryLabel.snp.bottom).offset(4)
+            make.top.equalTo(subCategoryLabel.snp.bottom).offset(4)
             make.left.right.bottom.equalToSuperview()
         }
     }
     
     // MARK:- Helpers
     override func prepareForReuse() {
-        categoryLabel.text = ""
+//        categoryLabel.text = ""
         imageView.image = UIImage(named: "not_found")
     }
 
