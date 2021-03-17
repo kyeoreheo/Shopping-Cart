@@ -48,6 +48,7 @@ class ProductCell: UICollectionViewCell {
     
     private func configureUI() {
         addSubview(imageView)
+        imageView.clipsToBounds = true
         imageView.backgroundColor = .grey2
         imageView.contentMode = .scaleAspectFill
         imageView.image = UIImage(named: "not_found")
@@ -58,7 +59,6 @@ class ProductCell: UICollectionViewCell {
         }
         
         addSubview(nameLabel)
-        nameLabel.backgroundColor = .blue
         nameLabel.text = "Item name here"
         nameLabel.textColor = .grey8
         nameLabel.textAlignment = .left

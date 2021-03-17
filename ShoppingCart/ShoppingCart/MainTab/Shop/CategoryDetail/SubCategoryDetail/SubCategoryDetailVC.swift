@@ -99,6 +99,13 @@ class SubCategoryDetailVC: UIViewController {
 // MARK:- Extension
 extension SubCategoryDetailVC: ProductCVCDelegate {
     func cellTapped(index: Int) {
+        
+        let vc = ProductDetailVC(viewModel: ProductVM(model: products[index]))
+        vc.modalPresentationStyle = .popover
+        present(vc, animated: true, completion: nil)
+//        let qrScanVC = QRSacnVC()
+//        qrScanVC.modalPresentationStyle = .popover
+//        present(qrScanVC, animated: true, completion: nil)
         print("DEBUG:- cell Tapped \(index)")
     }
     
