@@ -6,12 +6,21 @@
 //
 
 class SubCategoryDetailVM {
-    let title: String
-    let description: String
-    let id: String
+    private let model: Subcategory
+
     init(model: Subcategory) {
-        self.title = model.scname
-        self.description = model.scdiscription
-        self.id = model.scid
+        self.model = model
+    }
+    
+    var title: String {
+        model.scname
+    }
+    
+    var description: String {
+        model.scdiscription
+    }
+    
+    var id: String {
+        model.scid
     }
 }

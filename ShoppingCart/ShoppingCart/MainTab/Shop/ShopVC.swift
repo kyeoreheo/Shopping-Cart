@@ -29,7 +29,7 @@ class ShopVC: UIViewController, Coordinating {
     private func configureUI() {
         view.backgroundColor = .white
         view.addSubview(titleLabel)
-        titleLabel.text = "Trand Items"
+        titleLabel.text = "Tranding Items"
         titleLabel.textColor = .grey8
         titleLabel.font = .notoBold(size: 24 * ratio)
         titleLabel.snp.makeConstraints { make in

@@ -10,16 +10,16 @@ import UIKit
 class SubCategoryDetailVC: UIViewController {
     // MARK:- View components
     private let titleLabel = UILabel()
-    private let discriptionLabel = UILabel()
+    private let descriptionLabel = UILabel()
     private lazy var header = CustomView.shared.header(headerType: .back,
                      target: self, action: #selector(popVC))
-    private let subCategoryCVC = SubCategoryCVC()
+    private let productCVC = ProductCVC()
 
     // MARK:- Properties
     private let cID: String
     private let viewModel: SubCategoryDetailVM
-    private var subCategories = [Subcategory]() {
-        didSet { subCategoryCVC.subCategories = subCategories }
+    private var products = [Product]() {
+        didSet { productCVC.products = products }
     }
     
     // MARK:- Lifecycles
@@ -58,22 +58,22 @@ class SubCategoryDetailVC: UIViewController {
             make.left.right.equalToSuperview()
         }
         
-        view.addSubview(discriptionLabel)
-        discriptionLabel.text = viewModel.description
-        discriptionLabel.textColor = .grey8
-        discriptionLabel.numberOfLines = 0
-        discriptionLabel.textAlignment = .center
-        discriptionLabel.font = .notoReg(size: 12 * ratio)
-        discriptionLabel.snp.makeConstraints { make in
+        view.addSubview(descriptionLabel)
+        descriptionLabel.text = viewModel.description
+        descriptionLabel.textColor = .grey8
+        descriptionLabel.numberOfLines = 0
+        descriptionLabel.textAlignment = .center
+        descriptionLabel.font = .notoReg(size: 12 * ratio)
+        descriptionLabel.snp.makeConstraints { make in
             make.top.equalTo(titleLabel.snp.bottom).offset(12)
             make.left.equalToSuperview().offset(24)
             make.right.equalToSuperview().offset(-24)
         }
         
-        view.addSubview(subCategoryCVC.view)
-        subCategoryCVC.delegate = self
-        subCategoryCVC.view.snp.makeConstraints { make in
-            make.top.equalTo(discriptionLabel.snp.bottom).offset(8)
+        view.addSubview(productCVC.view)
+        productCVC.delegate = self
+        productCVC.view.snp.makeConstraints { make in
+            make.top.equalTo(descriptionLabel.snp.bottom).offset(8)
             make.left.right.equalToSuperview()
             make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
         }
@@ -83,6 +83,7 @@ class SubCategoryDetailVC: UIViewController {
         API.shared.getProducts(cID: cID, scID: viewModel.id) { [weak self] response in
             guard let strongSelf = self, let response = response
             else { return }
+            strongSelf.products = response.products
             
         }
         
@@ -96,7 +97,7 @@ class SubCategoryDetailVC: UIViewController {
 }
 
 // MARK:- Extension
-extension SubCategoryDetailVC: SubCategoryCVCDelegate {
+extension SubCategoryDetailVC: ProductCVCDelegate {
     func cellTapped(index: Int) {
         print("DEBUG:- cell Tapped \(index)")
     }

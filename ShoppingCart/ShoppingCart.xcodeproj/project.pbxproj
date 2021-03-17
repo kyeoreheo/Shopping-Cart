@@ -263,9 +263,9 @@
 		3159844F2601C327003AE228 /* SubCategoryDetail */ = {
 			isa = PBXGroup;
 			children = (
-				315984652601C399003AE228 /* ProductCVC */,
 				315984582601C355003AE228 /* SubCategoryDetailVM.swift */,
 				315984502601C345003AE228 /* SubCategoryDetailVC.swift */,
+				315984652601C399003AE228 /* ProductCVC */,
 			);
 			path = SubCategoryDetail;
 			sourceTree = "<group>";
@@ -273,9 +273,9 @@
 		315984652601C399003AE228 /* ProductCVC */ = {
 			isa = PBXGroup;
 			children = (
+				315984712601C3B9003AE228 /* ProductVM.swift */,
 				315984602601C394003AE228 /* ProductCVC.swift */,
 				3159846C2601C3B0003AE228 /* ProductCell.swift */,
-				315984712601C3B9003AE228 /* ProductVM.swift */,
 			);
 			path = ProductCVC;
 			sourceTree = "<group>";

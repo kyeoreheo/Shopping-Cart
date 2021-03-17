@@ -5,20 +5,39 @@
 //  Created by Kyo on 3/17/21.
 //
 
+import Foundation
+
 class ProductVM {
-    let id: String
-    let name: String
-    let quantity: String
-    let price: String
-    let discription: String
-    let imageStringURL: String
-    
+    private let model: Product
+
     init(model: Product) {
-        self.id = model.id
-        self.name = model.pname
-        self.quantity = model.quantity
-        self.price = model.prize
-        self.discription = model.discription
-        self.imageStringURL = model.image
+        self.model = model
     }
+    
+    var id: String {
+        return model.id
+    }
+    
+    var name: String {
+        return model.pname
+    }
+    
+    var quantity: String {
+        return model.quantity + " left"
+    }
+    
+    var description: String {
+        return model.discription
+    }
+    
+    var price: String {
+        let numberFormatter = NumberFormatter()
+        numberFormatter.numberStyle = .decimal
+        return "$" + (numberFormatter.string(from: NSNumber(value: Int(model.prize) ?? 0)) ?? "")
+    }
+    
+    var imageStringURL: String {
+        return model.image
+    }
+    
 }

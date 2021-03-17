@@ -6,15 +6,26 @@
 //
 
 class CategoryDetailVM {
-    let cID: String
-    let title: String
-    let discription: String
-    let imageURL: String
+    private let model: Category
+
     init(model: Category) {
-        self.cID = model.cid
-        self.title = model.cname
-        self.discription = model.cdiscription
-        self.imageURL = model.cimagerl
+        self.model = model
     }
-//    init(model: Ca)
+    
+    var cID: String {
+        return model.cid
+    }
+    
+    var title: String {
+        return model.cname
+    }
+    
+    var description: String {
+        return model.cdiscription
+    }
+    
+    var imageURL: String {
+        return model.cimagerl
+    }
+
 }

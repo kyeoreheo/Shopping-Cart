@@ -10,7 +10,7 @@ import UIKit
 class CategoryDetailVC: UIViewController {
     // MARK:- View components
     private let titleLabel = UILabel()
-    private let discriptionLabel = UILabel()
+    private let descriptionLabel = UILabel()
     private lazy var header = CustomView.shared.header(headerType: .back,
                      target: self, action: #selector(popVC))
     private let subCategoryCVC = SubCategoryCVC()
@@ -56,13 +56,13 @@ class CategoryDetailVC: UIViewController {
             make.left.right.equalToSuperview()
         }
         
-        view.addSubview(discriptionLabel)
-        discriptionLabel.text = viewModel.discription
-        discriptionLabel.textColor = .grey8
-        discriptionLabel.numberOfLines = 0
-        discriptionLabel.textAlignment = .center
-        discriptionLabel.font = .notoReg(size: 12 * ratio)
-        discriptionLabel.snp.makeConstraints { make in
+        view.addSubview(descriptionLabel)
+        descriptionLabel.text = viewModel.description
+        descriptionLabel.textColor = .grey8
+        descriptionLabel.numberOfLines = 0
+        descriptionLabel.textAlignment = .center
+        descriptionLabel.font = .notoReg(size: 12 * ratio)
+        descriptionLabel.snp.makeConstraints { make in
             make.top.equalTo(titleLabel.snp.bottom).offset(12)
             make.left.equalToSuperview().offset(24)
             make.right.equalToSuperview().offset(-24)
@@ -71,7 +71,7 @@ class CategoryDetailVC: UIViewController {
         view.addSubview(subCategoryCVC.view)
         subCategoryCVC.delegate = self
         subCategoryCVC.view.snp.makeConstraints { make in
-            make.top.equalTo(discriptionLabel.snp.bottom).offset(8)
+            make.top.equalTo(descriptionLabel.snp.bottom).offset(8)
             make.left.right.equalToSuperview()
             make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
         }
