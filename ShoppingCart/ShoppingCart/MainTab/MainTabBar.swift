@@ -15,7 +15,6 @@ class MainTabBar: UITabBarController, UITabBarControllerDelegate, Coordinating {
 
     // MARK: - Lifecycles
     init(viewModel: MainTabBarVM) {
-//        self.coordinator = coordinator
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
     }
@@ -35,7 +34,6 @@ class MainTabBar: UITabBarController, UITabBarControllerDelegate, Coordinating {
         self.selectedIndex = 0
         
         API.shared.getTopSellers { response in
-//            print(response)
             
         }
     }
