@@ -40,4 +40,8 @@ class ProductVM {
         return model.image
     }
     
+    var getModel: Product {
+        return model
+    }
+    
 }

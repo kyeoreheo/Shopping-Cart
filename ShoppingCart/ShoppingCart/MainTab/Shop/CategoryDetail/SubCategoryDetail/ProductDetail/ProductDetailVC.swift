@@ -119,7 +119,7 @@ class ProductDetailVC: UIViewController {
     }
     
     @objc func purchaseButtonTapped() {
+        User.shared.addProduct(viewModel.getModel)
         dismiss(animated: true)
-        print("DEUBG:- tapped")
     }
 }

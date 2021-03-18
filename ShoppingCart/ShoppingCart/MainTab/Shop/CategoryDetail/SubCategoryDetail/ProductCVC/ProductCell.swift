@@ -48,6 +48,7 @@ class ProductCell: UICollectionViewCell {
     
     private func configureUI() {
         addSubview(imageView)
+        imageView.layer.cornerRadius = 5
         imageView.clipsToBounds = true
         imageView.backgroundColor = .grey2
         imageView.contentMode = .scaleAspectFill
